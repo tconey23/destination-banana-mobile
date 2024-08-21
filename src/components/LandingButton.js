@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    textStyle: {
+    buttonText: {
         fontFamily: "Fredoka",
-        fontSize: '2em',
+        fontWeight: 'bold',
+        fontSize: 40,
     }
   });
