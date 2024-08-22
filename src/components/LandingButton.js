@@ -20,14 +20,14 @@ const styles = StyleSheet.create({
     button: {
         zIndex: 10,
         width: '100%', 
-        height: 70,    
+        height: 45,    
         borderWidth: 0,   
         paddingVertical: 10,
         paddingHorizontal: 50,
         borderRadius: 100,
         backgroundColor: '#fcb805',
         shadowColor: '#ff931e', 
-        shadowOffset: { width: 0, height: 15 }, 
+        shadowOffset: { width: 0, height: 12 }, 
         shadowOpacity: 1, 
         shadowRadius: 0,
         alignItems: 'center',
@@ -36,6 +36,6 @@ const styles = StyleSheet.create({
     buttonText: {
         fontFamily: "Fredoka",
         fontWeight: 'bold',
-        fontSize: 40,
+        fontSize: 25,
     }
   });
