@@ -4,6 +4,8 @@ import LandingButton from './src/components/LandingButton'
 
 
 function App() {
+  const landingBackground = require('./src/assets/beach_light.png')
+
 
   function startGame() {
 
@@ -13,30 +15,33 @@ function App() {
 
   }
 
-
-
   return (
-    <ImageBackground source={require('./src/assets/beach_light.png')} style={{width: '100%', height: '100%', flex: 1}}>
-      <View style={styles.container}>
-        <Text style={styles.text}>Destination: Banana Home Page</Text>
-        <View style={styles.buttonContainer}>
-          <LandingButton onButtonPress={startGame} color='#fcb805' buttonText='start'/>
-          <LandingButton onButtonPress={showInstructions} color='#fcb805' buttonText='help'/>
-        </View>
-        <StatusBar style="auto" />
+    
+      <View style={styles.landingContainer}>
+        <ImageBackground source={landingBackground} style={{width: '100%', height: '100%', flex: 1}} resizeMode="stretch">
+          <View style={styles.container}>
+            <Text style={styles.text}>Destination: Banana Home Page</Text>
+            <View style={styles.buttonContainer}>
+              <LandingButton onButtonPress={startGame} color='#fcb805' buttonText='start'/>
+              <LandingButton onButtonPress={showInstructions} color='#fcb805' buttonText='help'/>
+            </View>
+            <StatusBar style="auto" />
+          </View>
+        </ImageBackground>
       </View>
-    </ImageBackground>
+
   )
 }
 
 export default App
 
 const styles = StyleSheet.create({
+  landingContainer: {
+    flex: 1
+  },
   container: {
-    backgroundImage: '/assets/beach_light.svg',
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 10
