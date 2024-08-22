@@ -22,6 +22,7 @@ function App() {
         <ImageBackground source={landingBackground} style={{width: '100%', height: '120%', flex: 1}} resizeMode="stretch">
           <View style={styles.container}>
             <Image source={dBLogoBig} style={styles.dBLogo}/>
+            <Text style={styles.landingText}>A game of connections. And bananas. Can you get to "banana" before the pesky monkeys gobble them all up??</Text>
             <View style={styles.buttonContainer}>
               <LandingButton onButtonPress={startGame} color='#fcb805' buttonText='start'/>
               <LandingButton onButtonPress={showInstructions} color='#fcb805' buttonText='help'/>
@@ -50,15 +51,20 @@ const styles = StyleSheet.create({
   dBLogo: {
     width: 290,
     height: 185,
-    marginBottom: 50
+    marginBottom: 30
   },
-  text: {
+  landingText: {
     textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 15,
+    marginBottom: 30,
+    width: '80%'
   },
   buttonContainer: {
     height: 120,
     width: '50%',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    marginBottom: 30
   }
 })
