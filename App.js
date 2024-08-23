@@ -19,7 +19,7 @@ function App() {
   return (
     
       <View style={styles.landingContainer}>
-        <ImageBackground source={landingBackground} style={{width: '100%', height: '120%', flex: 1}} resizeMode="stretch">
+        <ImageBackground source={landingBackground} style={{width: '100%', height: '120%', flex: 1}} resizeMode="cover">
           <View style={styles.container}>
             <Image source={dBLogoBig} style={styles.dBLogo}/>
             <Text style={styles.landingText}>A game of connections. And bananas. Can you get to "banana" before the pesky monkeys gobble them all up??</Text>

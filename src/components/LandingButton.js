@@ -1,14 +1,30 @@
 import { View, Pressable, StyleSheet, Text } from 'react-native';
+import { useFonts, Fredoka_300Light, Fredoka_400Regular, Fredoka_500Medium, Fredoka_600SemiBold, Fredoka_700Bold } from '@expo-google-fonts/fredoka';
 
 function LandingButton({onButtonPress, color, buttonText}) {
+
+    let [fontsLoaded] = useFonts({
+        Fredoka_400Regular,
+        Fredoka_500Medium,
+        Fredoka_600SemiBold,
+        Fredoka_700Bold
+      })
 
     return (
         <View>
             <Pressable
                 
                 onPress={onButtonPress}
-                style={[styles.button, { backgroundColor: color }]}>
-                    <Text style={styles.buttonText}>{buttonText}</Text>
+                style={({pressed}) => [
+                    styles.button,
+                    { backgroundColor: color},
+                    {transform: pressed ? [{translateY: 15}] : [{translateY: 0}]},
+                    pressed && {shadowOffset:  { width: 0, height: 0 }}  
+                ]}
+                >
+                    {fontsLoaded && <Text style={[styles.buttonText, {fontFamily: 'Fredoka_600SemiBold'}]}>{buttonText}</Text>}
+
+                    
             </Pressable>
         </View>
     )
@@ -22,8 +38,6 @@ const styles = StyleSheet.create({
         width: '100%', 
         height: 45,    
         borderWidth: 0,   
-        paddingVertical: 10,
-        paddingHorizontal: 50,
         borderRadius: 100,
         backgroundColor: '#fcb805',
         shadowColor: '#ff931e', 
@@ -34,8 +48,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonText: {
-        fontFamily: "Fredoka",
-        fontWeight: 'bold',
-        fontSize: 25,
+        fontSize: 25
     }
   });
