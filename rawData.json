@@ -1,0 +1,174 @@
+{
+    tfa: {
+      type: 'standard',
+      title: 'John_F._Kennedy_document_hoax',
+      displaytitle: '<span class="mw-page-title-main">John F. Kennedy document hoax</span>',
+      namespace: { id: 0, text: '' },
+      wikibase_item: 'Q6232415',
+      titles: {
+        canonical: 'John_F._Kennedy_document_hoax',
+        normalized: 'John F. Kennedy document hoax',
+        display: '<span class="mw-page-title-main">John F. Kennedy document hoax</span>'
+      },
+      pageid: 31001675,
+      thumbnail: {
+        source: 'https://upload.wikimedia.org/wikipedia/en/4/4e/Forged_Kennedy_document.jpg',
+        width: 277,
+        height: 360
+      },
+      originalimage: {
+        source: 'https://upload.wikimedia.org/wikipedia/en/4/4e/Forged_Kennedy_document.jpg',
+        width: 277,
+        height: 360
+      },
+      lang: 'en',
+      dir: 'ltr',
+      revision: '1241886289',
+      tid: '236ba9e0-6178-11ef-a1ae-a22a694b58e2',
+      timestamp: '2024-08-23T17:50:09Z',
+      description: '1993 American political hoax',
+      description_source: 'local',
+      content_urls: { desktop: [Object], mobile: [Object] },
+      extract: "In 1993, Lawrence X. Cusack III forged 350 documents from, or relating to, John F. Kennedy, the president of the United States from 1961 to 1963. Some of the forged documents supposedly showed that Kennedy had dealings with organized crime, tax evasion, bribery of FBI Director J. Edgar Hoover, payment of hush money to actress Marilyn Monroe for being Kennedy's lover, and a secret first marriage.",
+      extract_html: "<p>In 1993, Lawrence X. Cusack III forged 350 documents from, or relating to, John F. Kennedy, the president of the United States from 1961 to 1963. Some of the forged documents supposedly showed that Kennedy had dealings with organized crime, tax evasion, bribery of FBI Director J. Edgar Hoover, payment of hush money to actress Marilyn Monroe for being Kennedy's lover, and a secret first marriage.</p>",
+      normalizedtitle: 'John F. Kennedy document hoax'
+    },
+    mostread: {
+      date: '2024-08-22Z',
+      articles: [
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object], [Object], [Object], [Object],
+        [Object]
+      ]
+    },
+    image: {
+      title: 'File:Beetroots in a basket.jpg',
+      thumbnail: {
+        source: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Beetroots_in_a_basket.jpg/640px-Beetroots_in_a_basket.jpg',
+        width: 640,
+        height: 427
+      },
+      image: {
+        source: 'https://upload.wikimedia.org/wikipedia/commons/5/52/Beetroots_in_a_basket.jpg',
+        width: 4580,
+        height: 3053
+      },
+      file_page: 'https://commons.wikimedia.org/wiki/File:Beetroots_in_a_basket.jpg',
+      artist: {
+        html: '<a href="//commons.wikimedia.org/wiki/User:W.carter" title="User:W.carter">W.carter</a>',
+        text: 'W.carter',
+        name: 'W.carter',
+        user_page: 'https://commons.wikimedia.org/wiki/User:W.carter'
+      },
+      credit: {
+        html: '<span class="int-own-work" lang="en">Own work</span>',
+        text: 'Own work'
+      },
+      license: {
+        type: 'CC BY-SA 4.0',
+        code: 'cc-by-sa-4.0',
+        url: 'https://creativecommons.org/licenses/by-sa/4.0'
+      },
+      description: {
+        html: 'Newly harvested beetroots (<i>Beta vulgaris</i>) in a basket in Tuntorp, Brastad, Lysekil Municipality, Sweden',
+        text: 'Newly harvested beetroots (Beta vulgaris) in a basket in Tuntorp, Brastad, Lysekil Municipality, Sweden',
+        lang: 'en'
+      },
+      wb_entity_id: 'M110758791',
+      structured: { captions: [Object] }
+    },
+    news: [
+      {
+        links: [Array],
+        story: '<!--Aug 19-->In cycling, <a rel="mw:WikiLink" href="./Katarzyna_Niewiadoma" title="Katarzyna Niewiadoma" id="mwBg">Katarzyna Niewiadoma</a> <i id="mwBw">(pictured)</i> wins <b id="mwCA"><a rel="mw:WikiLink" href="./2024_Tour_de_France_Femmes" title="2024 Tour de France Femmes" id="mwCQ">the Tour de France Femmes</a></b>.'
+      },
+      {
+        links: [Array],
+        story: '<!--Aug 17-->Doctors strike and protests occur across India after <b id="mwCw"><a rel="mw:WikiLink" href="./2024_Kolkata_rape_and_murder_incident" title="2024 Kolkata rape and murder incident" id="mwDA">the rape and murder</a></b> of a female physician in <a rel="mw:WikiLink" href="./Kolkata" title="Kolkata" id="mwDQ">Kolkata</a>.'
+      },
+      {
+        links: [Array],
+        story: '<!--Aug 16--><b id="mwDw"><a rel="mw:WikiLink" href="./Paetongtarn_Shinawatra" title="Paetongtarn Shinawatra" id="mwEA">Paetongtarn Shinawatra</a></b> becomes <a rel="mw:WikiLink" href="./Prime_Minister_of_Thailand" title="Prime Minister of Thailand" id="mwEQ">Prime Minister of Thailand</a> after <b id="mwEg"><a rel="mw:WikiLink" href="./Srettha_Thavisin" title="Srettha Thavisin" id="mwEw">Srettha Thavisin</a></b> is dismissed by the <a rel="mw:WikiLink" href="./Constitutional_Court_of_Thailand" title="Constitutional Court of Thailand" id="mwFA">Constitutional Court</a>.'
+      },
+      {
+        links: [Array],
+        story: '<!--Aug 14-->The <a rel="mw:WikiLink" href="./World_Health_Organization" title="World Health Organization" id="mwFg">World Health Organization</a> declares <b id="mwFw"><a rel="mw:WikiLink" href="./2023–2024_mpox_epidemic" title="2023–2024 mpox epidemic" id="mwGA">the mpox epidemic</a></b> to be a <a rel="mw:WikiLink" href="./Public_health_emergency_of_international_concern" title="Public health emergency of international concern" id="mwGQ">global health emergency</a>.'
+      }
+    ],
+    onthisday: [
+      {
+        text: 'A 5.8 MW earthquake struck the Piedmont region of Virginia, and was felt by more people than any other quake in U.S. history.',
+        pages: [Array],
+        year: 2011
+      },
+      {
+        text: 'A former Philippine National Police officer hijacked a tourist bus in Manila, holding its occupants hostage for nearly eleven hours and killing eight of them before being killed by police himself.',
+        pages: [Array],
+        year: 2010
+      },
+      {
+        text: "Natascha Kampusch, who had been abducted at the age of ten in Vienna, escaped from her captor's house in Strasshof an der Nordbahn after more than eight years in captivity.",
+        pages: [Array],
+        year: 2006
+      },
+      {
+        text: 'Singing Revolution: Approximately two million people joined hands to form a human chain spanning 675.5 kilometres (419.7 mi) across the Estonian, Latvian and Lithuanian Soviet republics to demonstrate their desire for independence.',
+        pages: [Array],
+        year: 1989
+      },
+      {
+        text: 'The Cruise of the Kings, a royal cruise organised by the Queen Consort of Greece, Frederica of Hanover, departed from Marseille, France.',
+        pages: [Array],
+        year: 1954
+      },
+      {
+        text: 'Second World War: A decisive Soviet victory against German forces at the Battle of Kursk gave the Red Army the strategic initiative for the rest of the war.',
+        pages: [Array],
+        year: 1943
+      },
+      {
+        text: 'Nazi Germany and the Soviet Union signed the Molotov–Ribbentrop Pact (pictured), a ten-year mutual non-aggression treaty, which also secretly divided northern and eastern Europe into German and Soviet spheres of influence.',
+        pages: [Array],
+        year: 1939
+      },
+      {
+        text: 'The Chesapeake–Potomac hurricane made landfall in the Outer Banks of North Carolina and went on to cause at least 47 deaths in the U.S. Mid-Atlantic region.',
+        pages: [Array],
+        year: 1933
+      },
+      {
+        text: 'In their first major action of the First World War, the British Expeditionary Force engaged German troops in Mons, Belgium.',
+        pages: [Array],
+        year: 1914
+      },
+      {
+        text: 'The Southern Cross Expedition, the first British venture of the Heroic Age of Antarctic Exploration, departed London.',
+        pages: [Array],
+        year: 1898
+      },
+      {
+        text: 'The Albert Bridge, spanning the River Thames in London, opened to traffic.',
+        pages: [Array],
+        year: 1873
+      },
+      {
+        text: 'King George III issued a proclamation (copy pictured) that declared elements of the American colonies of Great Britain to be in a state of "open and avowed rebellion".',
+        pages: [Array],
+        year: 1775
+      },
+      {
+        text: 'William Wallace, a leader of Scottish resistance against England during the Wars of Scottish Independence, was hanged, drawn and quartered.',
+        pages: [Array],
+        year: 1305
+      }
+    ]
+  }

@@ -19,7 +19,15 @@ function LandingButton({onButtonPress, color, buttonText}) {
                     styles.button,
                     { backgroundColor: color},
                     {transform: pressed ? [{translateY: 15}] : [{translateY: 0}]},
-                    pressed && {shadowOffset:  { width: 0, height: 0 }}  
+                    pressed && { shadowOffset: { width: 0, height: 0 } },
+                    color === 'white' && { 
+                        backgroundColor: styles.button.backgroundColorWhite, 
+                        shadowColor: styles.button.shadowColorWhite 
+                    },
+                    color !== 'white' && { 
+                        backgroundColor: styles.button.backgroundColorYellow, 
+                        shadowColor: styles.button.shadowColorYellow 
+                    }
                 ]}
                 >
                     {fontsLoaded && <Text style={[styles.buttonText, {fontFamily: 'Fredoka_600SemiBold'}]}>{buttonText}</Text>}
@@ -39,8 +47,6 @@ const styles = StyleSheet.create({
         height: 45,    
         borderWidth: 0,   
         borderRadius: 100,
-        backgroundColor: '#fcb805',
-        shadowColor: '#ff931e', 
         backgroundColorYellow: '#fcb805',
         shadowColorYellow: '#ff931e', 
         backgroundColorWhite: '#e5fdfb',

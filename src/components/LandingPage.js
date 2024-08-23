@@ -12,8 +12,8 @@ function LandingPage({startGame, showHelp}) {
                 <Image source={dBLogoBig} style={styles.dBLogo}/>
                 <Text style={styles.landingText}>A game of connections. And bananas. Can you get to "banana" before the pesky monkeys gobble them all up??</Text>
                 <View style={styles.buttonContainer}>
-                    <LandingButton onButtonPress={startGame} color='#fcb805' buttonText='start'/>
-                    <LandingButton onButtonPress={showHelp} color='#E5FDFB' buttonText='help'/>
+                    <LandingButton onButtonPress={startGame} color='yellow' buttonText='start'/>
+                    <LandingButton onButtonPress={showHelp} color='white' buttonText='help'/>
                 </View>
                 <StatusBar style="auto" />
             </View>
