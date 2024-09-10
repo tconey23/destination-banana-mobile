@@ -13,7 +13,6 @@ function LandingButton({onButtonPress, color, buttonText}) {
     return (
         <View>
             <Pressable
-                
                 onPress={onButtonPress}
                 style={({pressed}) => [
                     styles.button,
