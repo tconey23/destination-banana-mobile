@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native'
-import LandingButton from './LandingButton'
+import LandingButton from '../uiElements/LandingButton'
 import { StatusBar } from 'expo-status-bar'
 
 function LandingPage({startGame, showHelp}) {

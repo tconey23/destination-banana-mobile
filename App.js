@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, Draggable, StatusBar } from 'react-native'
+import { StyleSheet, View, StatusBar } from 'react-native'
 import { useState } from 'react'
 import LandingPage from './src/components/LandingPage'
+import GamePage from './src/components/GamePage'
 import { getLinks, getFeatured } from './apiCalls'
 
 function App() {
@@ -38,10 +39,7 @@ function App() {
           <LandingPage startGame={startGame} showHelp={showHelp}/>
         }
         {onPage === 'game' &&
-          <View style={{width: '100%', textAlign: 'center', flexDirection: 'column'}}>
-            <Text>{featuredTitle}</Text>
-            <View style={styles.linksContainer}>{featuredLinks}</View>
-          </View>
+          <GamePage featuredTitle={featuredTitle} featuredLinks={featuredLinks} ></GamePage>
         }
         {onPage === 'help' &&
           <View></View>
