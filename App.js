@@ -26,8 +26,12 @@ function App() {
     setId(prev => prev++)
   }
 
+  async function addPage(title) {
+    const newPage = await makePage(title)
+    storePage(newPage)
+  }
+
   async function startGame() {
-    
     try {
       const data = await getFeatured()
       const title = await data.tfa.title
@@ -44,7 +48,6 @@ function App() {
   }
 
   return (
-    
     <>
       <StatusBar hidden={true} />
       <View style={styles.mainContainer}>
@@ -52,7 +55,7 @@ function App() {
           <LandingPage startGame={startGame} showHelp={showHelp}/>
         }
         {onPage === 'game' &&
-          <GamePage currentPages={currentPages}></GamePage>
+          <GamePage currentPages={currentPages} addPage={addPage}></GamePage>
         }
         {onPage === 'help' &&
           <View></View>
@@ -66,9 +69,7 @@ export default App
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1
-  },
-  linksContainer: {
-    flexDirection: 'column'
+    flex: 1,
+    paddingVertical: 30,
   }
 })

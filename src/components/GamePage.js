@@ -3,10 +3,10 @@ import LinksView from './LinksView'
 import PagesView from './PagesView'
 import {View, StyleSheet, Text} from 'react-native'
 
-function GamePage({currentPages}) {
+function GamePage({currentPages, addPage}) {
   return (
     <View style={styles.gamePage}>
-      <LinksView key={Date.now()} currentPages={currentPages}/>
+      <LinksView key={Date.now()} currentPages={currentPages} addPage={addPage}/>
       <PagesView></PagesView>
     </View>
   )
