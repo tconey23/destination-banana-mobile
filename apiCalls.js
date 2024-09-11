@@ -6,8 +6,13 @@ async function getFeatured() {
     const month = String(currentDate.getMonth() + 1).padStart(2, '0')
     const day = String(currentDate.getDate()).padStart(2, '0')
     const parsedDate = `${year}/${month}/${day}`
-    const res = await fetch(`https://en.wikipedia.org/api/rest_v1/feed/featured/${parsedDate}`)
-    return res.json()
+
+    try {
+        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/feed/featured/${parsedDate}`)
+        return res.json()
+    } catch (error) {
+        console.log(error)
+    }
   }
   
 async function getLinks(title) {
@@ -20,12 +25,12 @@ async function getLinks(title) {
         
         data.query.pages.forEach((page) => {
             page.links.forEach((link) => {
-                linksArray.push(<Text key={link.pageid}>{link.title}</Text>)
+                linksArray.push(link)
             })
         })
 
     } catch (error) {
-        print(error)
+        console.log(error)
     }
 
     return linksArray

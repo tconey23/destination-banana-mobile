@@ -1,4 +1,4 @@
-import { StyleSheet, View, StatusBar } from 'react-native'
+import { StyleSheet, View, StatusBar, Text } from 'react-native'
 import { useState } from 'react'
 import LandingPage from './src/components/LandingPage'
 import GamePage from './src/components/GamePage'
@@ -6,23 +6,36 @@ import { getLinks, getFeatured } from './apiCalls'
 
 function App() {
   const [onPage, setOnPage] = useState('landing')
-  const [featuredTitle, setFeaturedTitle] = useState('')
-  const [featuredLinks, setFeaturedLinks] = useState('')
+  const [id, setId] = useState(0)
+  const [currentPages, setCurrentPages] = useState([])
+  const [allPages, setAllPages] = useState([])
+
+  async function makePage(title) {
+    const links = await getLinks(title)
+    const newPage = {
+      id: id,
+      title: title,
+      links: links,
+    }
+    return newPage
+  }
+
+  function storePage(page) {
+    setCurrentPages(prev => [...prev, page])
+    setAllPages(prev => [...prev, page])
+    setId(prev => prev++)
+  }
 
   async function startGame() {
-    setOnPage('game')
+    
     try {
       const data = await getFeatured()
-      const title = data.tfa.title
-      setFeaturedTitle(title)
-      try {
-        const links = await getLinks(title)
-        setFeaturedLinks(links)
-      } catch (error) {
-        console.error('An error occurred:', error)
-      }
+      const title = await data.tfa.title
+      const newPage = await makePage(title)
+      storePage(newPage)
+      setOnPage('game')
     } catch (error) {
-      console.error('An error occurred:', error)
+      console.error(error)
     }
   }
 
@@ -39,7 +52,7 @@ function App() {
           <LandingPage startGame={startGame} showHelp={showHelp}/>
         }
         {onPage === 'game' &&
-          <GamePage featuredTitle={featuredTitle} featuredLinks={featuredLinks} ></GamePage>
+          <GamePage currentPages={currentPages}></GamePage>
         }
         {onPage === 'help' &&
           <View></View>
