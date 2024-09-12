@@ -3,15 +3,13 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import PickerSelectButton from './PickerSelectButton';
 
-function Links({ links, id, addPage, setImageSrc }) { 
-  const [selectedTitle, setSelectedTitle] = useState(['Select an option', 0]);
+function Links({ links, id, addPage }) { 
+  const [selectedTitle, setSelectedTitle] = useState([links[0].title, 0]);
 
   return (
     <View style={styles.linksView}>
       <Text style={styles.selectedLink}>{selectedTitle[0]}</Text>
-      {selectedTitle[0] !== 'Select an option' && 
-        <PickerSelectButton title={selectedTitle[0]} setImageSrc={setImageSrc}/>
-      }
+        <PickerSelectButton title={selectedTitle[0]} addPage={addPage}/>
       <Picker
         selectedValue={selectedTitle[1]}
         style={styles.picker}

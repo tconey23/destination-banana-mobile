@@ -25,7 +25,7 @@ function LinksView({ currentPages, addPage }) {
               <Text style={styles.title}>
                 {page.title} 
               </Text>
-              <PageThumbnail style={styles.pageThumbnail} imageSrc={imageSrc}/>
+              <PageThumbnail style={styles.pageThumbnail} imageSrc={page.image}/>
               <ScrollView style={styles.scrollView}>
                 <LinksBox
                   key={index}

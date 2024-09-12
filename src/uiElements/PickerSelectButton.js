@@ -1,25 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { View, Pressable, StyleSheet, Text } from 'react-native';
-import { getMedia } from '../../apiCalls';
 
-function PickerSelectButton({title, setImageSrc}) {
 
-    const [imageUrl, setImageUrl] = useState()
-
-    async function getImageSource(title) {
-        const url = await getMedia(title)
-        setImageUrl(url)
-    }
-
-    useEffect(() => {
-        if(imageUrl){
-            setImageSrc(imageUrl)
-        }
-    }, [imageUrl])
+function PickerSelectButton({title, addPage}) {
 
   return (
     <View>
-        <Pressable onPress={() => getImageSource(title)}>
+        <Pressable onPress={() => addPage(title)}>
             <Text>Select Link</Text>
         </Pressable>
     </View>

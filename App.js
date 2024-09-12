@@ -2,7 +2,7 @@ import { StyleSheet, View, StatusBar, Text } from 'react-native'
 import { useState } from 'react'
 import LandingPage from './src/components/LandingPage'
 import GamePage from './src/components/GamePage'
-import { getLinks, getFeatured } from './apiCalls'
+import { getLinks, getFeatured, getMedia } from './apiCalls'
 
 function App() {
   const [onPage, setOnPage] = useState('landing')
@@ -12,11 +12,14 @@ function App() {
 
   async function makePage(title) {
     const links = await getLinks(title)
+    const url = await getMedia(title)
     const newPage = {
       id: id,
       title: title,
       links: links,
+      image: url
     }
+    
     return newPage
   }
 
