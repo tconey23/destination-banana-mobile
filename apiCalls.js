@@ -16,8 +16,9 @@ async function getFeatured() {
   }
   
 async function getLinks(title) {
-    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links&titles=${title}&formatversion=2&pllimit=max`.replace(/%20/g, '_')
+    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links%7Cimages&list=&titles=${title}&formatversion=2&pllimit=max`.replace(/%20/g, '_')
     const linksArray = []
+    const imagesArray = []
 
     try {
         const response = await fetch(url)
@@ -29,11 +30,22 @@ async function getLinks(title) {
             })
         })
 
+        data.query.images.forEach((image) => {
+                imagesArray.push(`https://en.wikipedia.org/wiki/${title}/media/${image.title}`)
+        })
+        
     } catch (error) {
         console.log(error)
     }
-
+console.log("I-A", imagesArray)
     return linksArray
 }
 
   export { getFeatured, getLinks}
+
+  //https://en.wikipedia.org/wiki/${title}/media/
+
+
+  //https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links%7Cimages&list=&titles=Metallica&formatversion=2
+
+  //https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links&titles=${title}&formatversion=2&pllimit=max

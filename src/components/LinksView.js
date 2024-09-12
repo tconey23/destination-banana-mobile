@@ -1,38 +1,37 @@
 import React from 'react'
-import { StyleSheet, View, Text, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, ScrollView, ImageBackground } from 'react-native'
 import Swiper from 'react-native-swiper'
-import Links from '../uiElements/Links'
+import LinksBox from '../uiElements/LinksBox'
 
 function LinksView({currentPages, addPage}) {
+  const landingBackground = require('../../src/assets/beach_light.png')
 
   return (
-    <Swiper
-    index={currentPages.length - 1}
-    style={styles.wrapper}
-    showsButtons={true}  
-    autoplay={false}       
-    loop={false}          
-    dotColor="gray"      
-    activeDotColor="blue" 
-  >
-
+    <ImageBackground source={landingBackground} style={{width: '100%', height: '120%', flex: 1}} resizeMode="cover">
+      <Swiper
+        index={currentPages.length - 1}
+        style={styles.wrapper}
+        showsButtons={true}  
+        autoplay={false}       
+        loop={false}          
+        dotColor="gray"      
+        activeDotColor="blue" 
+      >
         {currentPages.map((page) => (
           <View style={styles.pageContainer}>
-          <Text style={styles.title}>{page.title}</Text>
-          <ScrollView>
-            <Links
-              key={page.id}
-              id={page.id}
-              title={page.title}
-              links={page.links}
-              addPage={addPage}
+            <Text style={styles.title}>{page.title}</Text>
+            <ScrollView>
+              <LinksBox
+                key={page.id}
+                id={page.id}
+                links={page.links}
+                addPage={addPage}
               />
-          </ScrollView>
-              </View>
+            </ScrollView>
+          </View>
         ))}
-    
-  </Swiper>
-      
+      </Swiper>
+    </ImageBackground>
   )
 }
 
@@ -41,6 +40,8 @@ export default LinksView
 const styles = StyleSheet.create({
   pageContainer:{
     flex: 1,
+    backgroundColor: 'antiquewhite',
+    margin: 30,
     
   },
   wrapper: {

@@ -1,15 +1,15 @@
 import React, {useState} from 'react'
 import {View, Text, StyleSheet, Pressable} from 'react-native'
 
-function Links({title, links, id, addPage}) { 
+function Links({links, id, addPage}) { 
 
   return (
     <View style={styles.linksView}>
-            {links && links.map((link) => (
-                <Pressable onPress={() => addPage(link.title)} key={id}>
-                    <Text>{link.title}</Text>
-                </Pressable>
-            ))}
+      {links && links.map((link) => (
+        <Pressable onPress={() => addPage(link.title)} key={id}>
+          <Text>{link.title}</Text>
+        </Pressable>
+      ))}
     </View>
   )
 }
