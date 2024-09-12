@@ -36,13 +36,12 @@ const styles = StyleSheet.create({
     pageHeader: {
         alignItems: 'center',
         flexDirection: 'row',
-        flex: 2,
-        justifyContent: 'center'
+        justifyContent: 'flex-start'
     },
     linkIcon: { 
         width: '50%',
         paddingTop: 5,
-        marginBottom: -20,
+        marginBottom: -20, 
         paddingLeft: 100,
     } 
   });

@@ -18,18 +18,20 @@ function LinksView({ currentPages, addPage }) {
       >
         {currentPages.map((page, index) => (
           <View key={index} style={styles.pageContainer}>
-            <PageHead currentPages={currentPages}/>
-            <Text style={styles.title}>
-              {page.title} 
-            </Text>
-            <ScrollView>
-              <LinksBox
-                key={index}
-                id={page.id}
-                links={page.links}
-                addPage={addPage}
-              />
-            </ScrollView>
+            <View style={styles.pageWrapper}>
+              <PageHead currentPages={currentPages}/>
+              <Text style={styles.title}>
+                {page.title} 
+              </Text>
+              <ScrollView style={styles.scrollView}>
+                <LinksBox
+                  key={index}
+                  id={page.id}
+                  links={page.links}
+                  addPage={addPage}
+                  />
+              </ScrollView>
+            </View>
           </View>
         ))}
       </Swiper>
@@ -43,24 +45,24 @@ const styles = StyleSheet.create({
   pageContainer: {
     flex: 1,
     backgroundColor: 'antiquewhite',
-    margin: 30,
+    marginVertical: 40,
+    marginHorizontal: 30,
   },
-  wrapper: {
-    height: '80%',
+  pageWrapper: {
+    paddingTop: 10,
+    flex: 1,
+    // backgroundColor: 'blue',
+    justifyContent: 'flex-start'
   },
+  scrollView: {
+    flex: 1
+  }, 
   title: {
     width: '100%',
     textAlign: 'center',
     fontWeight: 'bold',
     paddingTop: 30,
     paddingBottom: -30,
-    justifyContent: 'center',
     fontSize: 20,
-  },
-  pageCount: {
-    paddingLeft: 50,
-    paddingTop: 10,
-    marginBottom: -20,
-    fontWeight: 'bold',
-  },
+  }
 });

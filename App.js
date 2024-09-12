@@ -70,6 +70,6 @@ export default App
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    paddingVertical: 30,
+    paddingVertical: 0,
   }
 })
