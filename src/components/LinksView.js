@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, View, Text, ScrollView, ImageBackground } from 'react-native';
 import Swiper from 'react-native-swiper';
 import LinksBox from '../uiElements/LinksBox';
 import PageHead from '../uiElements/PageHead';
+import PageThumbnail from '../uiElements/PageThumbnail';
 
 function LinksView({ currentPages, addPage }) {
   const landingBackground = require('../../src/assets/beach_light.png');
-  
+  const [imageSrc, setImageSrc] = useState()
+
   return (
     <ImageBackground source={landingBackground} style={{ width: '100%', height: '120%', flex: 1 }} resizeMode="cover">
       <Swiper
@@ -23,12 +25,14 @@ function LinksView({ currentPages, addPage }) {
               <Text style={styles.title}>
                 {page.title} 
               </Text>
+              <PageThumbnail style={styles.pageThumbnail} imageSrc={imageSrc}/>
               <ScrollView style={styles.scrollView}>
                 <LinksBox
                   key={index}
                   id={page.id}
                   links={page.links}
                   addPage={addPage}
+                  setImageSrc={setImageSrc}
                   />
               </ScrollView>
             </View>
@@ -64,5 +68,9 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: -30,
     fontSize: 20,
+  },
+  pageThumbnail: {
+    height: 100,
+    backgroundColor: 'blue'
   }
 });

@@ -8,6 +8,21 @@ function randomizeLinks(array) {
       return array;
 }
 
+async function getMedia(title) {
+    const url = `https://en.wikipedia.org/api/rest_v1/page/media-list/${title}?redirect=true`
+
+    try {
+        const res = await fetch(url)
+        data = await res.json()
+        const pageThumb = data.items.find((img) => img.leadImage === true).srcset[0].src
+
+        return pageThumb
+
+    } catch (error) {
+        return '//upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/150px-Wikipedia-logo-v2.svg.png'
+    }
+}
+
 async function getFeatured() {
     const currentDate = new Date();
     const year = currentDate.getFullYear()
@@ -49,4 +64,4 @@ async function getLinks(title) {
     return randomizedArray.slice(0, x)
 }
 
-  export { getFeatured, getLinks}
+  export { getFeatured, getLinks, getMedia}
