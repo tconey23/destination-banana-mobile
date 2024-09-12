@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Text, ScrollView, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, ImageBackground, Image, Pressable } from 'react-native';
 import Swiper from 'react-native-swiper';
 import LinksBox from '../uiElements/LinksBox';
 import PageHead from '../uiElements/PageHead';
-import PageThumbnail from '../uiElements/PageThumbnail';
+import ArticleSnippet from '../uiElements/ArticleSnippet';
 
-function LinksView({ currentPages, addPage, handleLinkClick }) {
-  const landingBackground = require('../../src/assets/beach_light.png');
+function LinksView({ currentPages, addPage, handleLinkClick, allPages, toggleGameViews, currentIndex, setOnPage }) {
   const [imageSrc, setImageSrc] = useState()
 
   return (
-    <ImageBackground source={landingBackground} style={{ width: '100%', height: '120%', flex: 1 }} resizeMode="cover">
+    <View style={styles.pagesContainer}>
+      <PageHead currentPages={currentPages} allPages={allPages} setOnPage={setOnPage}/>
       <Swiper
-        index={currentPages.length - 1}
+        index={currentIndex}
         containerStyle={styles.swiperContainer}
         slideStyle={styles.slide}
         showsButtons={true}
@@ -23,12 +23,10 @@ function LinksView({ currentPages, addPage, handleLinkClick }) {
         {currentPages.map((page, index) => (
           <View key={index} style={styles.pageContainer}>
             <View style={styles.pageWrapper}>
-              <PageHead currentPages={currentPages}/>
               <Text style={styles.title}>
                 {page.title} 
               </Text>
-              <PageThumbnail style={styles.pageThumbnail} imageSrc={page.image}/>
-              <ScrollView style={styles.scrollView}>
+              <ArticleSnippet style={styles.pageThumbnail} imageSrc={page.image}/>
                 <LinksBox
                   key={index}
                   id={page.id}
@@ -38,18 +36,20 @@ function LinksView({ currentPages, addPage, handleLinkClick }) {
                   addPage={addPage}
                   setImageSrc={setImageSrc}
                   />
-              </ScrollView>
             </View>
           </View>
         ))}
       </Swiper>
-    </ImageBackground>
+    </View>
   );
 }
 
 export default LinksView;
 
 const styles = StyleSheet.create({
+  pagesContainer: {
+    flex: 1
+  },
   pageContainer: {
     flex: 1,
     backgroundColor: 'antiquewhite',

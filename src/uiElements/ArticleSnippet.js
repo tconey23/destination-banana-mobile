@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, Image } from 'react-native';
 
-function PageThumbnail({imageSrc}) {
+function ArticleSnippet({imageSrc}) {
   return (
     <View style={styles.thumbnailWrapper}>
         <Image style={styles.image} source={{uri: `https:${imageSrc}`}}/>
@@ -9,16 +9,16 @@ function PageThumbnail({imageSrc}) {
   )
 }
 
-export default PageThumbnail
+export default ArticleSnippet
 
 const styles = {
     thumbnailWrapper: {
         
     },
     image: {
-        height: 150,
-        width: 150,
-        alignSelf: 'center',
-        marginVertical: 10
+      height: 150,
+      width: 150,
+      alignSelf: 'center',
+      marginVertical: 10
     }
 }

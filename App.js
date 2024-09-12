@@ -53,7 +53,7 @@ function App() {
   function handleLinkClick(title, pageId) {
     if(pageId !== allPages.length - 1) {
       const toSlice = (currentPages.length) - pageId
-      for(let i=currentPages.length - 1; i > currentPages.length - 1 - toSlice; i--) {
+      for(let i=currentPages.length - 1; i > currentPages.length - toSlice; i--) {
         setAllPages(prev => [...prev, currentPages[i]])  
       }
 
@@ -63,6 +63,8 @@ function App() {
     addPage(title)
   }
 
+  // console.log('AP in App', allPages[0].title)
+
   return (
     <>
       <StatusBar hidden={true} />
@@ -71,7 +73,7 @@ function App() {
           <LandingPage startGame={startGame} showHelp={showHelp}/>
         }
         {onPage === 'game' &&
-          <GamePage currentPages={currentPages} addPage={addPage} handleLinkClick={handleLinkClick}></GamePage>
+          <GamePage currentPages={currentPages} addPage={addPage} handleLinkClick={handleLinkClick} allPages={allPages} setOnPage={setOnPage}></GamePage>
         }
         {onPage === 'help' &&
           <View></View>

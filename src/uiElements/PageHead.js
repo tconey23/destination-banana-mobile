@@ -3,17 +3,18 @@ import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
-function PageHead({currentPages}) {
+function PageHead({currentPages, allPages, setOnPage}) {
     
     function followLink() {
-        console.log(currentPages[currentPages.length.title])
+        console.log('click')
+        setOnPage('landing')
     }
 
   return (
     <View style={styles.pageHeader}>
         <View style={styles.pageCount}>
             <Text>
-                {currentPages.length} click{currentPages.length > 1 && 's'}
+                {allPages.length - 1} click{currentPages.length > 1 && 's'}
             </Text>
         </View>
         <Pressable onPress={() => followLink()} style={styles.linkIcon}>
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     pageCount: {
       width: '50%',
       paddingLeft: 50,
-      paddingTop: 5,
+      paddingTop: 40,
       marginBottom: -20,
       fontWeight: 'bold',
     },
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     },
     linkIcon: { 
         width: '50%',
-        paddingTop: 5,
+        paddingTop: 40,
         marginBottom: -20, 
         paddingLeft: 100,
     } 

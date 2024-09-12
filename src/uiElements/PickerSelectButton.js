@@ -8,7 +8,7 @@ function PickerSelectButton({title, id, handleLinkClick}) {
 
   return (
     <View>
-        <Pressable onPress={() => handleLinkClick(title, id)}>
+        <Pressable style={styles.button} onPress={() => handleLinkClick(title, id)}>
             <Text>Select Link</Text>
         </Pressable>
     </View>
@@ -16,3 +16,12 @@ function PickerSelectButton({title, id, handleLinkClick}) {
 }
 
 export default PickerSelectButton
+
+const styles = {
+  button: {
+    borderColor: 'black',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 20
+  }
+}
