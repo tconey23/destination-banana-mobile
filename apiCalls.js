@@ -1,5 +1,13 @@
 import { Text } from "react-native"
 
+function randomizeLinks(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+}
+
 async function getFeatured() {
     const currentDate = new Date();
     const year = currentDate.getFullYear()
@@ -16,9 +24,8 @@ async function getFeatured() {
   }
   
 async function getLinks(title) {
-    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links%7Cimages&list=&titles=${title}&formatversion=2&pllimit=max`.replace(/%20/g, '_')
+    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links&titles=${title}&formatversion=2&pllimit=max&plnamespace=0`.replace(/%20/g, '_')
     const linksArray = []
-    const imagesArray = []
 
     try {
         const response = await fetch(url)
@@ -29,23 +36,17 @@ async function getLinks(title) {
                 linksArray.push(link)
             })
         })
-
-        data.query.images.forEach((image) => {
-                imagesArray.push(`https://en.wikipedia.org/wiki/${title}/media/${image.title}`)
-        })
         
     } catch (error) {
         console.log(error)
     }
-console.log("I-A", imagesArray)
-    return linksArray
+
+    const randomizedArray = randomizeLinks(linksArray)
+    let x
+    randomizedArray.length < 50 ? x = 50 : x = randomizedArray.length
+    
+
+    return randomizedArray.slice(0, x)
 }
 
   export { getFeatured, getLinks}
-
-  //https://en.wikipedia.org/wiki/${title}/media/
-
-
-  //https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links%7Cimages&list=&titles=Metallica&formatversion=2
-
-  //https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links&titles=${title}&formatversion=2&pllimit=max
