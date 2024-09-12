@@ -3,13 +3,13 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import PickerSelectButton from './PickerSelectButton';
 
-function Links({ links, id, addPage }) { 
+function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) { 
   const [selectedTitle, setSelectedTitle] = useState([links[0].title, 0]);
 
   return (
     <View style={styles.linksView}>
       <Text style={styles.selectedLink}>{selectedTitle[0]}</Text>
-        <PickerSelectButton title={selectedTitle[0]} addPage={addPage}/>
+        <PickerSelectButton title={selectedTitle[0]} id={id} addPage={addPage} handleLinkClick={handleLinkClick}/>
       <Picker
         selectedValue={selectedTitle[1]}
         style={styles.picker}
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Links;
+export default LinksBox;

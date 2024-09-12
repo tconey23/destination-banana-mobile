@@ -5,7 +5,7 @@ import LinksBox from '../uiElements/LinksBox';
 import PageHead from '../uiElements/PageHead';
 import PageThumbnail from '../uiElements/PageThumbnail';
 
-function LinksView({ currentPages, addPage }) {
+function LinksView({ currentPages, addPage, handleLinkClick }) {
   const landingBackground = require('../../src/assets/beach_light.png');
   const [imageSrc, setImageSrc] = useState()
 
@@ -13,10 +13,12 @@ function LinksView({ currentPages, addPage }) {
     <ImageBackground source={landingBackground} style={{ width: '100%', height: '120%', flex: 1 }} resizeMode="cover">
       <Swiper
         index={currentPages.length - 1}
-        style={styles.wrapper}
+        containerStyle={styles.swiperContainer}
+        slideStyle={styles.slide}
         showsButtons={true}
         autoplay={false}
         loop={false}
+        activeSlideAlignment="center"
       >
         {currentPages.map((page, index) => (
           <View key={index} style={styles.pageContainer}>
@@ -31,6 +33,8 @@ function LinksView({ currentPages, addPage }) {
                   key={index}
                   id={page.id}
                   links={page.links}
+                  currentPages={currentPages}
+                  handleLinkClick={handleLinkClick}
                   addPage={addPage}
                   setImageSrc={setImageSrc}
                   />
@@ -72,5 +76,16 @@ const styles = StyleSheet.create({
   pageThumbnail: {
     height: 100,
     backgroundColor: 'blue'
+  },
+  swiperContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  slide: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 250, // Adjust the width to make space for the previous and next slides
+    height: 300, // Adjust the height as needed
   }
 });

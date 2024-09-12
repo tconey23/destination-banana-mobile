@@ -19,14 +19,14 @@ function App() {
       links: links,
       image: url
     }
-    
+
     return newPage
   }
 
   function storePage(page) {
     setCurrentPages(prev => [...prev, page])
     setAllPages(prev => [...prev, page])
-    setId(prev => prev++)
+    setId(prev => prev += 1)
   }
 
   async function addPage(title) {
@@ -50,6 +50,19 @@ function App() {
     setOnPage('help')
   }
 
+  function handleLinkClick(title, pageId) {
+    if(pageId !== allPages.length - 1) {
+      const toSlice = (currentPages.length) - pageId
+      for(let i=currentPages.length - 1; i > currentPages.length - 1 - toSlice; i--) {
+        setAllPages(prev => [...prev, currentPages[i]])  
+      }
+
+      setCurrentPages(prev => prev.slice(0, toSlice))
+    }
+
+    addPage(title)
+  }
+
   return (
     <>
       <StatusBar hidden={true} />
@@ -58,7 +71,7 @@ function App() {
           <LandingPage startGame={startGame} showHelp={showHelp}/>
         }
         {onPage === 'game' &&
-          <GamePage currentPages={currentPages} addPage={addPage}></GamePage>
+          <GamePage currentPages={currentPages} addPage={addPage} handleLinkClick={handleLinkClick}></GamePage>
         }
         {onPage === 'help' &&
           <View></View>
