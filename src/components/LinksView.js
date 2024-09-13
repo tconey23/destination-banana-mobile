@@ -1,40 +1,44 @@
-import React, {useState} from 'react';
-import { StyleSheet, View, Text, ScrollView, ImageBackground, Image, Pressable } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Dimensions } from 'react-native';
 import Swiper from 'react-native-swiper';
 import LinksBox from '../uiElements/LinksBox';
-import PageHead from '../uiElements/PageHead';
 import ArticleSnippet from '../uiElements/ArticleSnippet';
 
-function LinksView({ currentPages, addPage, handleLinkClick, allPages, toggleGameViews, currentIndex, setOnPage }) {
-  const [imageSrc, setImageSrc] = useState()
+const { width } = Dimensions.get('window'); // Get the screen width
+
+function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOnPage }) {
+  const [imageSrc, setImageSrc] = useState();
+
+  console.log(currentPages.length)
 
   return (
-    <View style={styles.pagesContainer}>
+    <View style={styles.pagesWrapper}>
       <Swiper
-        index={currentIndex}
+       loop={false}
+        index={currentPages.length -1}
+        showsPagination={true}
         containerStyle={styles.swiperContainer}
         slideStyle={styles.slide}
-        showsButtons={true}
-        autoplay={false}
-        loop={false}
+        scrollEnabled={true}
+        spaceBetween={1}
         activeSlideAlignment="center"
       >
         {currentPages.map((page, index) => (
-          <View key={index} style={styles.pageContainer}>
-            <View style={styles.pageWrapper}>
+          <View key={index} style={styles.slide}>
+            <View style={styles.page}>
               <Text style={styles.title}>
-                {page.title} 
+                {page.title.replace(/_/g, ' ')}
               </Text>
-              <ArticleSnippet style={styles.pageThumbnail} imageSrc={page.image}/>
-                <LinksBox
-                  key={index}
-                  id={page.id}
-                  links={page.links}
-                  currentPages={currentPages}
-                  handleLinkClick={handleLinkClick}
-                  addPage={addPage}
-                  setImageSrc={setImageSrc}
-                  />
+              <ArticleSnippet imageSrc={page.image} />
+              <LinksBox
+                key={index}
+                id={page.id}
+                links={page.links}
+                currentPages={currentPages}
+                handleLinkClick={handleLinkClick}
+                addPage={addPage}
+                setImageSrc={setImageSrc}
+              />
             </View>
           </View>
         ))}
@@ -46,45 +50,42 @@ function LinksView({ currentPages, addPage, handleLinkClick, allPages, toggleGam
 export default LinksView;
 
 const styles = StyleSheet.create({
-  pagesContainer: {
-    flex: 1
-  },
-  pageContainer: {
+  pagesWrapper: {
     flex: 1,
-    backgroundColor: 'antiquewhite',
-    marginVertical: 40,
-    marginHorizontal: 30,
-  },
-  pageWrapper: {
-    paddingTop: 10,
-    flex: 1,
-    // backgroundColor: 'blue',
-    justifyContent: 'flex-start'
-  },
-  scrollView: {
-    flex: 1
-  }, 
-  title: {
-    width: '100%',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    paddingTop: 30,
-    paddingBottom: -30,
-    fontSize: 20,
-  },
-  pageThumbnail: {
-    height: 100,
-    backgroundColor: 'blue'
+    width: width,
+    shadowColor: 'black', 
+    shadowOffset: 2,
+    shadowRadius: 10,
+    shadowOpacity: 1
   },
   swiperContainer: {
-    width: '100%',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
+    width: width * 1
   },
   slide: {
+    width: width-100,
+    marginVertical: 20,
+    backgroundColor: 'antiquewhite',
+    borderRadius: 20,
+    overflow: 'visible',
+    flex: 1,
     justifyContent: 'center',
+    alignSelf: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+  },
+  page: {
+    flex: 1,
     alignItems: 'center',
-    width: 250, // Adjust the width to make space for the previous and next slides
-    height: 300, // Adjust the height as needed
-  }
+    justifyContent: 'center',
+  },
+  title: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: '600',
+    textAlign: 'center'
+  },
 });

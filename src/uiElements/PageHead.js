@@ -8,8 +8,8 @@ function PageHead({allPages, returnHome, currentPages}) {
     
   return (
     <View style={styles.pageHeader}>
-        <View style={styles.pageCount}>
-            <Text>
+        <View style={styles.pageCountWrapper}>
+            <Text style={styles.pageCount}>
                 {currentPages.length ?
                     <Text>{allPages.length - 1} click{currentPages.length - 1 !== 1 && 's'}</Text>
                     :
@@ -27,19 +27,22 @@ function PageHead({allPages, returnHome, currentPages}) {
 export default PageHead
 
 const styles = StyleSheet.create({
-    pageCount: {
-      width: '50%',
-      paddingLeft: 50,
-      fontWeight: 'bold',
-    },
     pageHeader: {
-        alignItems: 'center',
         flexDirection: 'row',
-        justifyContent: 'flex-start',
-        paddingTop: 50,
+        backgroundColor: 'rgba(0,0,0,0.25)',
+        marginTop: 50,
+        height: 50,
+        alignItems: 'center'
+    },
+    pageCount: {
+      fontWeight: '800',
+    },
+    pageCountWrapper: {
+        paddingLeft: 50,
+        flex: 3
     },
     linkIcon: { 
-        width: '50%',
         paddingLeft: 100,
+        flex: 2,
     } 
   });

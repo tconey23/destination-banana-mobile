@@ -60,7 +60,6 @@ async function getLinks(title) {
     let x
     randomizedArray.length < 50 ? x = 50 : x = randomizedArray.length
     
-
     return randomizedArray.slice(0, x)
 }
 

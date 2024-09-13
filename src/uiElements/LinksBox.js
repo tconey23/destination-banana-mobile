@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import PickerSelectButton from './PickerSelectButton';
 
@@ -9,17 +9,17 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
   return (
     <View style={styles.linksView}>
       <Text style={styles.selectedLink}>{selectedTitle[0]}</Text>
-        <PickerSelectButton title={selectedTitle[0]} id={id} addPage={addPage} handleLinkClick={handleLinkClick}/>
+        <PickerSelectButton title={selectedTitle[0]} id={id} addPage={addPage} handleLinkClick={handleLinkClick} color={'yellow'} />
       <Picker
         selectedValue={selectedTitle[1]}
         style={styles.picker}
         onValueChange={(itemValue, itemIndex) => {
           setSelectedTitle([links[itemIndex].title, itemIndex]);
-          console.log(links[itemIndex].title);
+          console.log(links[itemIndex].title); 
         }}
       >
         {links && links.map((link, index) => (
-          <Picker.Item key={index} label={link.title} value={index} />
+          <Picker.Item key={index} label={link.title} value={index}/>
         ))}
       </Picker>
     </View>
