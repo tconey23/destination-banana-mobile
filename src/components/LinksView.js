@@ -10,7 +10,6 @@ function LinksView({ currentPages, addPage, handleLinkClick, allPages, toggleGam
 
   return (
     <View style={styles.pagesContainer}>
-      <PageHead currentPages={currentPages} allPages={allPages} setOnPage={setOnPage}/>
       <Swiper
         index={currentIndex}
         containerStyle={styles.swiperContainer}

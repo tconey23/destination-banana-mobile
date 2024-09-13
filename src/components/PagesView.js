@@ -2,14 +2,13 @@ import React from 'react'
 import { StyleSheet, View, Text, Image, ScrollView, Pressable} from 'react-native'
 
 function PagesView({currentPages, allPages, setCurrentIndex, setOnLinksView}) {
-  console.log('AP', allPages)
-  console.log('page image', allPages[0].image)
-
   function handlePress(pageId){
     setCurrentIndex(pageId)
     setOnLinksView(prev => !prev)
   }
     
+//this is mapping all pages. We will need to grey out current pages if that's our desire.
+
   return (
       <ScrollView>
         <View style={styles.pagesContainer}>

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native'
 import LandingButton from '../uiElements/LandingButton'
 import { StatusBar } from 'expo-status-bar'
 
-function LandingPage({startGame, showHelp}) {
+function LandingPage({clickStart, showHelp}) {
     const landingBackground = require('../../src/assets/beach_light.png')
     const dBLogoBig = require('../../src/assets/DB-vertical-w-banana.png')
 
@@ -12,7 +12,7 @@ function LandingPage({startGame, showHelp}) {
                 <Image source={dBLogoBig} style={styles.dBLogo}/>
                 <Text style={styles.landingText}>A game of connections. And bananas. Can you get to "banana" before the pesky monkeys gobble them all up??</Text>
                 <View style={styles.buttonContainer}>
-                    <LandingButton onButtonPress={startGame} color='yellow' buttonText='start'/>
+                    <LandingButton onButtonPress={clickStart} color='yellow' buttonText='start'/>
                     <LandingButton onButtonPress={showHelp} color='white' buttonText='help'/>
                 </View>
                 <StatusBar style="auto" />
