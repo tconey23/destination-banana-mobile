@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 function PageHead({allPages, returnHome, currentPages}) {
     console.log('cp length', currentPages.length)
@@ -18,7 +18,7 @@ function PageHead({allPages, returnHome, currentPages}) {
             </Text>
         </View>
         <Pressable onPress={() => returnHome()} style={styles.linkIcon}>
-            <FontAwesomeIcon icon={faLink} size={20} color="#000" />
+            <FontAwesomeIcon icon={faHome} size={20} color="#000" />
         </Pressable>
     </View>
   )
@@ -30,19 +30,16 @@ const styles = StyleSheet.create({
     pageCount: {
       width: '50%',
       paddingLeft: 50,
-      paddingTop: 40,
-      marginBottom: -20,
       fontWeight: 'bold',
     },
     pageHeader: {
         alignItems: 'center',
         flexDirection: 'row',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        paddingTop: 50,
     },
     linkIcon: { 
         width: '50%',
-        paddingTop: 40,
-        marginBottom: -20, 
         paddingLeft: 100,
     } 
   });

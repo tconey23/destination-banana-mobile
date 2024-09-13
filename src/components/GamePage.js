@@ -53,7 +53,7 @@ function GamePage({setOnPage}) {
   function handleLinkClick(title, pageId) {
     if(pageId !== allPages.length - 1) {
       const toSlice = (currentPages.length) - pageId
-      for(let i=currentPages.length - 1; i > currentPages.length - toSlice; i--) {
+      for(let i=currentPages.length - 1; i > currentPages.length + 1 - toSlice; i--) {
         setAllPages(prev => [...prev, currentPages[i]])  
       }
       
