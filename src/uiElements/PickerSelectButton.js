@@ -56,5 +56,7 @@ const styles = {
     shadowRadius: 0,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 50,
+    marginTop: -25
 },
 }

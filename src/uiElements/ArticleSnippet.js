@@ -14,18 +14,14 @@ export default ArticleSnippet
 
 const styles = {
     thumbnailWrapper: {
-        backgroundColor: 'white',
         width: 200,
         height: 200,
         overflow: 'visibile',
-        borderColor: 'black',
-        borderStyle: 'solid',
-        borderWidth: 1.5,
-        margin: 20
+        margin: 10
     },
     image: {
       flex: 1,
-      transform: [{ scale: 0.9 }],
+      transform: [{ scale: 0.6 }],
       overflow: 'visibile'
     }
 }
