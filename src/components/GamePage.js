@@ -4,6 +4,7 @@ import PagesView from './PagesView'
 import PageHead from '../uiElements/PageHead'
 import {View, StyleSheet, Pressable, Image, ImageBackground, setOnPage} from 'react-native'
 import { getLinks, getFeatured, getMedia } from '../../apiCalls'
+import WinPage from './WinPage'
 
 function GamePage({setOnPage}) {
   const landingBackground = require('../../src/assets/beach_light.png')
@@ -68,7 +69,6 @@ function GamePage({setOnPage}) {
   }
 
   function returnHome() {
-    console.log('jere')
     setOnPage('landing')
     setCurrentPages([])
     setAllPages([])
@@ -109,6 +109,16 @@ function GamePage({setOnPage}) {
             <Image style={styles.treeIcon} source={treeIcon}/>
           </Pressable>
       </View>
+          {currentPages && 
+            <WinPage 
+              currentPages={currentPages} 
+              currentIndex={currentIndex} 
+              setOnPage={setOnPage}
+              setCurrentIndex={setCurrentIndex}
+              setOnLinksView={setOnLinksView}
+              allPages={allPages}
+              />
+          }
         </ImageBackground>
   )
 }

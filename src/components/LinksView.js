@@ -10,7 +10,6 @@ function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOn
   const [imageSrc, setImageSrc] = useState();
   const [background] = useState(require('../assets/realistic-old-paper.png'))
 
-
   return (
     <View style={styles.pagesWrapper}>
       <Swiper

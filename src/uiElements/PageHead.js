@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 function PageHead({allPages, returnHome, currentPages}) {
-    console.log('cp length', currentPages.length)
     
   return (
     <View style={styles.pageHeader}>

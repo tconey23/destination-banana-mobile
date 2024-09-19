@@ -1,10 +1,19 @@
 import { Text } from "react-native"
 
 function randomizeLinks(array) {
+    const banana = array.find((link) => link.title === "Banana")
+    const index = array.indexOf(banana)
+    array.splice(index, 1)
+
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
       }
+
+      if(banana){
+        array.unshift(banana)
+      }
+
       return array;
 }
 
@@ -39,7 +48,7 @@ async function getFeatured() {
   }
   
 async function getLinks(title) {
-    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links&titles=${title}&formatversion=2&pllimit=max&plnamespace=0`.replace(/%20/g, '_')
+    const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links&titles=${'Musa_(genus)'}&formatversion=2&pllimit=max&plnamespace=0`.replace(/%20/g, '_')
     const linksArray = []
 
     try {
