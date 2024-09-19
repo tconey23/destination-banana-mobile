@@ -17,7 +17,11 @@ function PagesView({currentPages, allPages, setCurrentIndex, setOnLinksView}) {
 
     return (
       <ImageBackground source={require('../assets/realistic-old-paper.png')} style={thumbStyle === 'active' ? styles.activeThumb : styles.inactiveThumb}>
-        <Pressable onPress={() => handlePress(page.id)} key={index} style={styles.pageWrapper}>
+        <Pressable
+          onPress={() => thumbStyle === 'active' && handlePress(page.id)}
+          key={index}
+          style={styles.pageWrapper}
+        >
           <Image resizeMode="cover" style={styles.image} source={{uri: `https:${page.image}`}}/>
           <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>{page.title}</Text>
         </Pressable>
@@ -68,8 +72,9 @@ const styles = {
     flex: 1,
   },
   inactiveThumb: {
-    backgroundColor: 'red',
-    
-    marginTop: 20
+    // backgroundColor: 'red',
+    tintColor: 'gray',
+    marginTop: 20,
+    opacity: 0.6,
   }
 }
