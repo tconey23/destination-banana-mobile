@@ -23,7 +23,7 @@ function PagesView({currentPages, allPages, setCurrentIndex, setOnLinksView}) {
           style={styles.pageWrapper}
         >
           <Image resizeMode="cover" style={styles.image} source={{uri: `https:${page.image}`}}/>
-          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>{page.title}</Text>
+          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>{page.title.replace(/_/g, ' ')}</Text>
         </Pressable>
       </ImageBackground>
     )

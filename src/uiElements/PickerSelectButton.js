@@ -3,8 +3,7 @@ import { View, Pressable, StyleSheet, Text } from 'react-native';
 
 
 function PickerSelectButton({title, id, handleLinkClick, color}) {
-
-  const [canClick, setCanClick] = useState(true)
+const [canClick, setCanClick] = useState(true)
 
 function clickTimeout(title, id) {
   setCanClick(false)

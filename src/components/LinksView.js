@@ -10,7 +10,6 @@ function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOn
   const [imageSrc, setImageSrc] = useState();
   const [background] = useState(require('../assets/realistic-old-paper.png'))
 
-
   return (
     <View style={styles.pagesWrapper}>
       <Swiper
@@ -25,7 +24,7 @@ function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOn
       >
         {currentPages.map((page, index) => (
           <View key={index} style={styles.slide}>
-            <ImageBackground source={background} style={styles.page}>
+            <ImageBackground source={''} style={styles.page}>
               <View style={styles.textWrapper}>
                 <Text style={styles.title}>
                   {page.title.replace(/_/g, ' ')}

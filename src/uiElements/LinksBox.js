@@ -4,10 +4,11 @@ import { Picker } from '@react-native-picker/picker';
 import PickerSelectButton from './PickerSelectButton';
 
 function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) { 
-  const [selectedTitle, setSelectedTitle] = useState([links[0].title, 0]);
+  const [selectedTitle, setSelectedTitle] = useState([links[0].title, 0])
+  const [background] = useState(require('../assets/realistic-old-paper.png'))
 
   return (
-    <ImageBackground source={require('../assets/realistic-old-paper.png')} style={styles.linksView}>
+    <ImageBackground source={''} style={styles.linksView}>
         <PickerSelectButton title={selectedTitle[0]} id={id} addPage={addPage} handleLinkClick={handleLinkClick} color={'yellow'} />
       <Picker
         selectedValue={selectedTitle[1]}
