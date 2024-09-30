@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, ImageBackground } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Dimensions, ImageBackground} from 'react-native';
 import Swiper from 'react-native-swiper';
 import LinksBox from '../uiElements/LinksBox';
 import ArticleSnippet from '../uiElements/ArticleSnippet';
+import { Easing } from 'react-native-reanimated'
 
 const { width } = Dimensions.get('window');
 
 function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOnPage }) {
   const [imageSrc, setImageSrc] = useState();
   const [background] = useState(require('../assets/realistic-old-paper.png'))
+  const [thisIndex, setThisIndex] = useState(currentPages.length - 2)
+
+
+  useEffect(() => {
+    setThisIndex(currentPages.length - 1)
+  }, [currentPages.length])
 
   return (
     <View style={styles.pagesWrapper}>
       <Swiper
-       loop={false}
-        index={currentPages.length -1}
+        loop={false}
+        showsButtons={true}
+        easing={Easing.ease}
+        index={thisIndex}
         showsPagination={true}
         containerStyle={styles.swiperContainer}
         slideStyle={styles.slide}
@@ -68,7 +77,7 @@ const styles = StyleSheet.create({
   },
   slide: {
     width: width-100,
-    marginVertical: 20,
+    marginBottom: 50,
     borderRadius: 20,
     overflow: 'visible',
     flex: 1,
@@ -78,23 +87,19 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   page: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 40,
-    marginVertical: -30,
+    paddingVertical: 0,
+    borderRadius: 20
   },
   title: {
     color: 'black',
     fontSize: 20,
-    fontWeight: '600',
+    fontWeight: '700',
     textAlign: 'center',
   },
   textWrapper: {
-    backgroundColor: 'rgba(255,255,255,0.3)',
-    marginTop: 40,
-    marginBottom: -30,
-    padding: 10,
+    marginTop: 20,
     borderRadius: 20,
   }
 });

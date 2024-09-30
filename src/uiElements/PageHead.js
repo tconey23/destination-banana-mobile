@@ -1,14 +1,18 @@
 import React from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+import HighButton from '../uiElements/HighButton'
 
-function PageHead({allPages, returnHome, currentPages}) {
+function PageHead({allPages, returnHome, currentPages, toggleGameViews}) {
     
   return (
-    <View style={styles.pageHeader}>
+    <View style={styles.pageHeader}> 
+        <View style={styles.toggleButton}>
+            <HighButton onButtonPress={toggleGameViews} color='yellow' buttonText='🌴'/>
+        </View>
         <View style={styles.pageCountWrapper}>
-            <Text style={styles.pageCount}>
+            <Text>
                 {currentPages.length ?
                     <Text>{allPages.length - 1} click{currentPages.length - 1 !== 1 && 's'}</Text>
                     :
@@ -28,20 +32,18 @@ export default PageHead
 const styles = StyleSheet.create({
     pageHeader: {
         flexDirection: 'row',
-        backgroundColor: 'rgba(0,0,0,0.25)',
+        justifyContent: 'space-between',
         marginTop: 50,
         height: 50,
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingHorizontal: 20,
     },
     pageCount: {
       fontWeight: '800',
-    },
-    pageCountWrapper: {
-        paddingLeft: 50,
-        flex: 3
+      color: 'yellow',
+
     },
     linkIcon: { 
-        paddingLeft: 100,
-        flex: 2,
+        
     } 
   });

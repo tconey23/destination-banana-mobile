@@ -17,11 +17,10 @@ const styles = {
         width: 200,
         height: 200,
         overflow: 'visibile',
-        margin: 10
     },
     image: {
       flex: 1,
-      transform: [{ scale: 0.6 }],
+      transform: [{ scale: 1 }],
       overflow: 'visibile'
     }
 }

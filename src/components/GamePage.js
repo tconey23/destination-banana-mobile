@@ -5,7 +5,6 @@ import PageHead from '../uiElements/PageHead'
 import {View, StyleSheet, Pressable, Image, ImageBackground, setOnPage} from 'react-native'
 import { getLinks, getFeatured, getMedia } from '../../apiCalls'
 import WinPage from './WinPage'
-import HighButton from '../uiElements/HighButton'
 
 function GamePage({setOnPage}) {
   const landingBackground = require('../../src/assets/beach_light.png')
@@ -91,33 +90,29 @@ function GamePage({setOnPage}) {
 
   return (
     <ImageBackground source={landingBackground} style={{ width: '100%', height: '120%', flex: 1 }} resizeMode="cover">
-      <PageHead allPages={allPages} currentPages={currentPages} returnHome={returnHome} />
+      <PageHead allPages={allPages} currentPages={currentPages} returnHome={returnHome} toggleGameViews={toggleGameViews}/>
       <View style={styles.gamePage}>
-      <View style={styles.toggleButton}>
-            <HighButton onButtonPress={toggleGameViews} color='yellow' buttonText='🌴'/>
-          </View>
-        {onLinksView ?
-          <LinksView 
-            key={Date.now()}
-            currentPages={currentPages}
-            allPages={allPages}
-            currentIndex={currentIndex}
-            addPage={addPage}
-            handleLinkClick={handleLinkClick}
-            setOnPage={setOnPage}/>
-          :
-          <PagesView
-            currentPages={currentPages}
-            allPages={allPages}
-            setCurrentIndex={setCurrentIndex}
-            setOnLinksView={setOnLinksView}
-            setOnPage={setOnPage}>
-          </PagesView>
-        }
+      {onLinksView ?
+        <LinksView 
+          key={Date.now()}
+          currentPages={currentPages}
+          allPages={allPages}
+          currentIndex={currentIndex}
+          addPage={addPage}
+          handleLinkClick={handleLinkClick}
+          setOnPage={setOnPage}/>
+        :
+        <PagesView
+          currentPages={currentPages}
+          allPages={allPages}
+          setCurrentIndex={setCurrentIndex}
+          setOnLinksView={setOnLinksView}
+          setOnPage={setOnPage}>
+        </PagesView>
+      }
           {/* <Pressable onPress={() => toggleGameViews()}>
             <Image style={styles.treeIcon} source={treeIcon}/>
           </Pressable> */}
-
       </View>
           {isWinner && 
             <WinPage 
