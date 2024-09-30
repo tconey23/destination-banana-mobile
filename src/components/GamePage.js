@@ -5,6 +5,7 @@ import PageHead from '../uiElements/PageHead'
 import {View, StyleSheet, Pressable, Image, ImageBackground, setOnPage} from 'react-native'
 import { getLinks, getFeatured, getMedia } from '../../apiCalls'
 import WinPage from './WinPage'
+import HighButton from '../uiElements/HighButton'
 
 function GamePage({setOnPage}) {
   const landingBackground = require('../../src/assets/beach_light.png')
@@ -15,6 +16,7 @@ function GamePage({setOnPage}) {
   const [currentIndex, setCurrentIndex] = useState(null)
   const [id, setId] = useState(0)
   const [allPages, setAllPages] = useState([])
+  const [isWinner, setIsWinner] = useState(false)
 
   async function makePage(title) {
     const links = await getLinks(title)
@@ -52,16 +54,20 @@ function GamePage({setOnPage}) {
   }
 
   function handleLinkClick(title, pageId) {
-    if(pageId !== allPages.length - 1) {
-      const toSlice = (currentPages.length) - pageId
-      for(let i=currentPages.length - 1; i > currentPages.length + 1 - toSlice; i--) {
-        setAllPages(prev => [...prev, currentPages[i]])  
+    if(title === 'Banana') {
+      setIsWinner(true)
+    } else {
+      if(pageId !== allPages.length - 1) {
+        const toSlice = (currentPages.length) - pageId
+        for(let i=currentPages.length - 1; i > currentPages.length + 1 - toSlice; i--) {
+          setAllPages(prev => [...prev, currentPages[i]])  
+        }
+        
+        setCurrentPages(prev => prev.slice(0, toSlice))
       }
       
-      setCurrentPages(prev => prev.slice(0, toSlice))
+      addPage(title)
     }
-    
-    addPage(title)
   }
   
   function toggleGameViews() {
@@ -87,6 +93,9 @@ function GamePage({setOnPage}) {
     <ImageBackground source={landingBackground} style={{ width: '100%', height: '120%', flex: 1 }} resizeMode="cover">
       <PageHead allPages={allPages} currentPages={currentPages} returnHome={returnHome} />
       <View style={styles.gamePage}>
+      <View style={styles.toggleButton}>
+            <HighButton onButtonPress={toggleGameViews} color='yellow' buttonText='🌴'/>
+          </View>
         {onLinksView ?
           <LinksView 
             key={Date.now()}
@@ -105,11 +114,12 @@ function GamePage({setOnPage}) {
             setOnPage={setOnPage}>
           </PagesView>
         }
-          <Pressable onPress={() => toggleGameViews()}>
+          {/* <Pressable onPress={() => toggleGameViews()}>
             <Image style={styles.treeIcon} source={treeIcon}/>
-          </Pressable>
+          </Pressable> */}
+
       </View>
-          {currentPages && 
+          {isWinner && 
             <WinPage 
               currentPages={currentPages} 
               currentIndex={currentIndex} 
@@ -117,6 +127,7 @@ function GamePage({setOnPage}) {
               setCurrentIndex={setCurrentIndex}
               setOnLinksView={setOnLinksView}
               allPages={allPages}
+              setIsWinner={setIsWinner}
               />
           }
         </ImageBackground>
@@ -133,6 +144,10 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     margin: 30
+  },
+  toggleButton: {
+    width: 50,
+    margin: 10
   }
 })
 

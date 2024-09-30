@@ -1,7 +1,7 @@
 import { View, Pressable, StyleSheet, Text } from 'react-native';
 import { useFonts, Fredoka_300Light, Fredoka_400Regular, Fredoka_500Medium, Fredoka_600SemiBold, Fredoka_700Bold } from '@expo-google-fonts/fredoka';
 
-function LandingButton({onButtonPress, color, buttonText}) {
+function HighButton({onButtonPress, color, buttonText}) {
 
     let [fontsLoaded] = useFonts({
         Fredoka_400Regular,
@@ -23,7 +23,7 @@ function LandingButton({onButtonPress, color, buttonText}) {
                         backgroundColor: styles.button.backgroundColorWhite, 
                         shadowColor: styles.button.shadowColorWhite 
                     },
-                    color !== 'white' && { 
+                    color === 'yellow' && { 
                         backgroundColor: styles.button.backgroundColorYellow, 
                         shadowColor: styles.button.shadowColorYellow 
                     }
@@ -37,7 +37,7 @@ function LandingButton({onButtonPress, color, buttonText}) {
     )
 }
 
-export default LandingButton
+export default HighButton
 
 const styles = StyleSheet.create({
     button: {
