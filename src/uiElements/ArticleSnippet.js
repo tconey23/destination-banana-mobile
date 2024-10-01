@@ -14,9 +14,9 @@ export default ArticleSnippet
 
 const styles = {
     thumbnailWrapper: {
-        width: 200,
-        height: 200,
-        overflow: 'visibile',
+      width: 200,
+      height: 200,
+      overflow: 'visibile',
     },
     image: {
       flex: 1,

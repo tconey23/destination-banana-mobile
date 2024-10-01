@@ -32,15 +32,11 @@ function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOn
         activeSlideAlignment="center"
       >
         {currentPages.map((page, index) => (
-          <View key={index} style={styles.slide}>
-            <ImageBackground source={''} style={styles.page}>
-              <View style={styles.textWrapper}>
-                <Text style={styles.title}>
-                  {page.title.replace(/_/g, ' ')}
-                </Text>
-              </View>
-              <ArticleSnippet imageSrc={page.image} />
-            </ImageBackground>
+          <View key={index} style={styles.page}>
+            <Text style={styles.title}>
+              {page.title.replace(/_/g, ' ')}
+            </Text>
+            <ArticleSnippet imageSrc={page.image} />
             <LinksBox
                 key={index}
                 id={page.id}
@@ -66,17 +62,18 @@ const styles = StyleSheet.create({
     shadowColor: 'black', 
     shadowOffset: 2,
     shadowRadius: 10,
-    shadowOpacity: 1
+    shadowOpacity: .3
   },
   swiperContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    width: width * 1
+    width: width
   },
-  slide: {
+  page: {
     width: width-100,
+    alignItems: 'center',
     marginBottom: 50,
     borderRadius: 20,
     overflow: 'visible',
@@ -84,22 +81,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 20,
-  },
-  page: {
-    alignItems: 'center',
-    justifyContent: 'center',
     paddingVertical: 0,
-    borderRadius: 20
   },
   title: {
     color: 'black',
-    fontSize: 20,
+    marginVertical: 5,
+    fontSize: 25,
     fontWeight: '700',
     textAlign: 'center',
   },
-  textWrapper: {
-    marginTop: 20,
-    borderRadius: 20,
-  }
 });

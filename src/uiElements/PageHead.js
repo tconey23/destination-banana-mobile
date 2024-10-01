@@ -1,18 +1,19 @@
 import React from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import HighButton from '../uiElements/HighButton'
 
 function PageHead({allPages, returnHome, currentPages, toggleGameViews}) {
-    
+    const palmTree = require('../../src/assets/tree_icon.png')
+
   return (
-    <View style={styles.pageHeader}> 
-        <View style={styles.toggleButton}>
-            <HighButton onButtonPress={toggleGameViews} color='yellow' buttonText='🌴'/>
-        </View>
+    <View style={styles.pageHeader}>
+        <Pressable onPress={() => toggleGameViews()}>
+            <Image source={palmTree} style={styles.palm}/>
+        </Pressable>
         <View style={styles.pageCountWrapper}>
-            <Text>
+            <Text style={styles.pageCount}>
                 {currentPages.length ?
                     <Text>{allPages.length - 1} click{currentPages.length - 1 !== 1 && 's'}</Text>
                     :
@@ -20,8 +21,8 @@ function PageHead({allPages, returnHome, currentPages, toggleGameViews}) {
                 }
             </Text>
         </View>
-        <Pressable onPress={() => returnHome()} style={styles.linkIcon}>
-            <FontAwesomeIcon icon={faHome} size={20} color="#000" />
+        <Pressable onPress={() => returnHome()}>
+            <FontAwesomeIcon icon={faHome} size={30} color="#000" />
         </Pressable>
     </View>
   )
@@ -36,14 +37,15 @@ const styles = StyleSheet.create({
         marginTop: 50,
         height: 50,
         alignItems: 'center',
-        paddingHorizontal: 20,
+        paddingHorizontal: 30,
     },
     pageCount: {
-      fontWeight: '800',
-      color: 'yellow',
-
+        fontWeight: '800',
+        color: 'orange',
+        fontSize: 20
     },
-    linkIcon: { 
-        
-    } 
+    palm: {
+        width: 30,
+        height: 30
+    }
   });
