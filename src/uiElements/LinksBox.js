@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   wholePageContainer: {
     flex: 1,
     width: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   linksContainer: {
     width: '100%',
@@ -157,17 +157,15 @@ const styles = StyleSheet.create({
   },
 
 
-linksViewContainer: {
-  flex: 1,
-  flexDirection: 'row',
-  justifyContent: 'center',
-  overflow: 'hidden',
-  width: width,
-  borderRadius: 20
-},
-
-
-
+  linksViewContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    width: width,
+    borderRadius: 20,
+    // paddingTop: 20
+  },
 
   linksView: {
     marginTop: 15,
