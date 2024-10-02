@@ -2,7 +2,7 @@ import { faAlignJustify } from '@fortawesome/free-solid-svg-icons'
 import {useState} from 'react'
 import { StyleSheet, View, Text, Image, ScrollView, Pressable, ImageBackground, Dimensions} from 'react-native'
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get('window')
 
 function PagesView({currentPages, allPages, setCurrentIndex, setOnLinksView}) {
 

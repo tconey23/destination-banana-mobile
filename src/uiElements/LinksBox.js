@@ -1,27 +1,45 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Pressable, ImageBackground, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Pressable, ImageBackground, ScrollView, Dimensions } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import PickerSelectButton from './PickerSelectButton';
+import PulsatingCircle from './PulsatingCircle';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+
+const { width } = Dimensions.get('window');
 
 function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
   const [selectedTitle, setSelectedTitle] = useState([links[0].title, 0])
-  const [background] = useState(require('../assets/realistic-old-paper.png'))
-
   const [linkIndex, setLinkIndex] = useState(0)
 
+  const [background] = useState(require('../assets/realistic-old-paper.png'))
+
+
+
   return (
-    <View style={styles.linksView}>
-        <ScrollView>
-          <View style={styles.linksContainer}>
-            {links && links.map((link, index) => (
-              <Pressable style={styles.titleContainer} onPress={() => setLinkIndex(index)}>
-                <Text style={index === linkIndex ? styles.selectedTitle : styles.title}>{link.title}</Text>
-                {index === linkIndex && <Text style={styles.selectedButton}>Click</Text>}
-              </Pressable>
-              ))
-            }
-          </View>
-        </ScrollView>
+    <View style={styles.linksViewContainer}>
+      <View style={styles.linksView}>
+          <ScrollView style={styles.scroll}>
+            <View style={styles.linksContainer}>
+              {links && links.map((link, index) => (
+                <View key={index} style={styles.titleContainer}>
+                  <Pressable style={index === linkIndex ? styles.selectedTitle : styles.title} onPress={() => setLinkIndex(index)}>
+                    <Text>{link.title}</Text>
+                  </Pressable>
+                  {index === linkIndex &&
+                    <PulsatingCircle 
+                      title={link.title}
+                      id={id}
+                      handleLinkClick={handleLinkClick}
+                      style={styles.circle}
+                    />
+                  }
+                </View>
+                ))
+              }
+            </View>
+          </ScrollView>
+        </View>
       </View>
 
     //   <ImageBackground source={''} style={styles.linksView}>
@@ -48,34 +66,57 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
 }
 
 const styles = StyleSheet.create({
+  linksContainer: {
+    width: '100%',
+    overflow: 'visible'
+  },
   titleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
     margin: 2,
-    paddingHorizontal: 20,
+    paddingHorizontal: 0,
+    overflow: 'visible'
   },
   title: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     textAlign: 'center',
-    width: '100%'
+    width: '100%',
+    overflow: 'visible'
   },
   selectedTitle: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     textAlign: 'center',
     backgroundColor: 'orange',
-    width: '100%'
+    width: '100%',
+    overflow: 'visible'
   },
-  selectedButton: {
-    position: 'absolute',
-    right: -20,
+  scroll: {
+    overflow: 'visible',
+    // width: '80%'
   },
+  circle: {
+    zIndex: 10,
+  },
+
+linksViewContainer: {
+  flex: 1,
+  flexDirection: 'row',
+  justifyContent: 'center',
+  overflow: 'hidden',
+  width: width,
+  borderRadius: 20
+},
 
 
 
 
   linksView: {
-    flex: 1,
     marginTop: 15,
-    width: 300,
+    width: '80%',
     alignItems: 'center',
     flexDirection: 'column',
     borderRadius: 20,
