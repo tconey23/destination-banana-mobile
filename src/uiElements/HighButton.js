@@ -2,7 +2,6 @@ import { View, Pressable, StyleSheet, Text } from 'react-native';
 import { useFonts, Fredoka_300Light, Fredoka_400Regular, Fredoka_500Medium, Fredoka_600SemiBold, Fredoka_700Bold } from '@expo-google-fonts/fredoka';
 
 function HighButton({onButtonPress, color, buttonText}) {
-
     let [fontsLoaded] = useFonts({
         Fredoka_400Regular,
         Fredoka_500Medium,

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Animated, Pressable, StyleSheet } from 'react-native';
+import { Animated, Pressable, StyleSheet, Text } from 'react-native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 function PulsatingCircle({ title, id, handleLinkClick }) {
     const [canClick, setCanClick] = useState(true)
@@ -42,7 +44,13 @@ function PulsatingCircle({ title, id, handleLinkClick }) {
                 { transform: [{ scale: scaleValue }] },
             ]}
         >
-            <Pressable style={styles.selectedButton} onPress={() => clickTimeout(title, id)}></Pressable>
+            <Pressable style={styles.selectedButton} onPress={() => clickTimeout(title, id)}>
+                {title === 'Banana' ?
+                    <Text style={{fontSize: 20}}>🍌</Text>
+                    :
+                    <FontAwesomeIcon icon={faArrowRight} size={25} color="#FFFFFF" />
+                }
+            </Pressable>
         </Animated.View>
     )
 }
@@ -50,7 +58,7 @@ function PulsatingCircle({ title, id, handleLinkClick }) {
 const styles = StyleSheet.create({
   circle: {
     position: 'absolute',
-    right: -10,
+    right: -15,
     backgroundColor: 'orange',
     width: 40,
     height: 40,
@@ -59,6 +67,8 @@ const styles = StyleSheet.create({
   },
   selectedButton: {
     zIndex: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
     height: '100%',
   }

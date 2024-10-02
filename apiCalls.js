@@ -72,4 +72,4 @@ async function getLinks(title) {
     return randomizedArray.slice(0, x)
 }
 
-  export { getFeatured, getLinks, getMedia}
+  export { getFeatured, getLinks, getMedia, randomizeLinks}
