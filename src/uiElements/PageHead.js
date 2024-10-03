@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
-import HighButton from '../uiElements/HighButton'
+import BananaButton from '../uiElements/BananaButton'
 
 function PageHead({allPages, returnHome, currentPages, toggleGameViews}) {
     const palmTree = require('../../src/assets/tree_icon.png')

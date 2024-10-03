@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import { View, Text, StyleSheet, Modal, Dimensions } from 'react-native';
 import PagesView from './PagesView';
-import HighButton from '../uiElements/HighButton'
+import BananaButton from '../uiElements/BananaButton'
 
 function WinPage({setOnPage, currentPages, currentIndex, allPages, setCurrentIndex, setOnLinksView, setIsWinner}) {
 
@@ -29,7 +29,7 @@ function WinPage({setOnPage, currentPages, currentIndex, allPages, setCurrentInd
             <View style={styles.fullPage}>
                 <Text>{`You won in ${currentPages.length} links!`}</Text>
                 <Text>yay</Text>
-                <HighButton color='yellow' onButtonPress={handleReturn} buttonText="Play Again!" />
+                <BananaButton color='yellow' onButtonPress={handleReturn} buttonText="Play Again!" />
                 <View style={styles.pages}>
                     {currentPages.map((page) => <Text style={styles.links}>🍌{page.title}</Text>)}
                 </View>

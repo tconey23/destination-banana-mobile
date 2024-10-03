@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, Pressable, ImageBackground, ScrollView, Dimensions } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import PickerSelectButton from './PickerSelectButton';
-import HighButton from './HighButton';
+import BananaButton from './BananaButton';
 import PulsatingCircle from './PulsatingCircle';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
@@ -40,10 +40,10 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
     <View style={styles.wholePageContainer}>
       <View style={styles.sortButtonsContainer}>
         <View style={styles.sortButton}>
-          <HighButton onButtonPress={sortAlpha} color='yellow' buttonText='A-z'/>
+          <BananaButton onButtonPress={sortAlpha} color='lightgrey' buttonHeight={5} buttonImage='alphabetical'/>
         </View>
         <View style={styles.sortButton}>
-          <HighButton onButtonPress={sortRandom} color='lightgrey' buttonText='ran'/>
+          <BananaButton onButtonPress={sortRandom} color='lightgrey' buttonHeight={5} buttonImage='random'/>
         </View>
       </View>
       <View style={styles.linksViewContainer}>
