@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import { faShuffle } from '@fortawesome/free-solid-svg-icons'
 import { randomizeLinks } from '../../apiCalls'
+import { StrokeText } from "@charmy.tech/react-native-stroke-text";
 
 const { width } = Dimensions.get('window');
 
@@ -15,6 +16,16 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
   const [selectedTitle, setSelectedTitle] = useState(links[0].title)
   const [linkIndex, setLinkIndex] = useState(0)
   const [sortedLinks, setSortedLinks] = useState(links)
+  const [canClick, setCanClick] = useState(true)
+
+  function clickTimeout(title, id) {
+      setCanClick(false)
+      handleLinkClick(title, id)
+  
+      setTimeout(() => {
+      setCanClick(true)
+      }, 500);
+  }
 
 
   const [background] = useState(require('../assets/realistic-old-paper.png'))
@@ -39,17 +50,22 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
 
   return (
     <>
-      <View style={styles.currentLinkContainer}>
+      <Pressable style={styles.currentLinkContainer} onPress={() => clickTimeout(selectedTitle, id)}>
         <View style={styles.currentLinkTitleContainer}>
-          <Text style={styles.currentLinkTitle}>{selectedTitle}</Text>
+          <StrokeText
+            text={selectedTitle}
+            fontSize={20}
+            color="#000000"
+            strokeColor="#FFFFFF"
+            strokeWidth={4}
+            fontFamily="Nunito-Black"
+          />
         </View>
           <PulsatingCircle 
             title={selectedTitle}
-            id={id}
-            handleLinkClick={handleLinkClick}
             style={styles.circle}
           />
-        </View>
+        </Pressable>
       <View style={styles.wholePageContainer}>  
         <View style={styles.sortButtonsContainer}>
           <BananaButton onButtonPress={sortAlpha} color='lightgrey' buttonDepth={5} height={30} width={30} buttonImage='alphabetical'/>
@@ -125,6 +141,7 @@ const styles = StyleSheet.create({
   currentLinkTitleContainer: {
     width: '100%',
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 30,
     backgroundColor: 'orange',
@@ -135,9 +152,8 @@ const styles = StyleSheet.create({
     width: '100%',
     textAlign: 'center',
     height: 25,
-    fontSize: 18,
-    fontWeight: 'bold',
-    
+    fontSize: 20,
+    // fontWeight: 'bold',
   },
   linksContainer: {
     width: '100%',
@@ -169,10 +185,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     textAlign: 'center',
-    backgroundColor: 'orange',
+    borderWidth: 2,
+    marginVertical: -2,
+    borderColor: 'orange',
     width: '100%',
     overflow: 'visible',
-    borderRadius: 10,
+    borderRadius: 15,
     paddingVertical: 2,
   },
   scroll: {

@@ -4,17 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 function PulsatingCircle({ title, id, handleLinkClick }) {
-    const [canClick, setCanClick] = useState(true)
     const scaleValue = useRef(new Animated.Value(1)).current
-
-    function clickTimeout(title, id) {
-        setCanClick(false)
-        handleLinkClick(title, id)
-    
-        setTimeout(() => {
-        setCanClick(true)
-        }, 500);
-    }
 
     useEffect(() => {
         const pulsate = () => {
@@ -44,14 +34,12 @@ function PulsatingCircle({ title, id, handleLinkClick }) {
                 { transform: [{ scale: scaleValue }] },
             ]}
         >
-            <View
-                style={styles.selectedButton}
-                onPress={() => clickTimeout(title, id)}>
-                    {title === 'Banana' ?
-                        <Text style={{fontSize: 20}}>🍌</Text>
-                        :
-                        <FontAwesomeIcon icon={faArrowRight} size={25} color="#FFFFFF" />
-                    }
+            <View style={styles.selectedButton}>
+                {title === 'Banana' ?
+                    <Text style={{fontSize: 20}}>🍌</Text>
+                    :
+                    <FontAwesomeIcon icon={faArrowRight} size={25} color="#FFFFFF" />
+                }
             </View>
         </Animated.View>
     )
