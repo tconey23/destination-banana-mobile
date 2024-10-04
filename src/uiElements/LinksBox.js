@@ -12,9 +12,10 @@ import { randomizeLinks } from '../../apiCalls'
 const { width } = Dimensions.get('window');
 
 function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
-  const [selectedTitle, setSelectedTitle] = useState([links[0].title, 0])
+  const [selectedTitle, setSelectedTitle] = useState(links[0].title)
   const [linkIndex, setLinkIndex] = useState(0)
   const [sortedLinks, setSortedLinks] = useState(links)
+
 
   const [background] = useState(require('../assets/realistic-old-paper.png'))
 
@@ -37,36 +38,47 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
   console.log('sortedLinks', sortedLinks)
 
   return (
-    <View style={styles.wholePageContainer}>
-      <View style={styles.sortButtonsContainer}>
-        <BananaButton onButtonPress={sortAlpha} color='lightgrey' buttonDepth={5} height={35} width={35} buttonImage='alphabetical'/>
-        <BananaButton onButtonPress={sortRandom} color='lightgrey' buttonDepth={5} height={35} width={35} buttonImage='random'/>
-      </View>
-      <View style={styles.linksViewContainer}>
-        <View style={styles.linksView}>
-            <ScrollView style={styles.scroll}>
-              <View style={styles.linksContainer}>
-                {links && sortedLinks && sortedLinks.map((link, index) => (
-                  <View key={index} style={styles.titleContainer}>
-                    <Pressable style={index === linkIndex ? styles.selectedTitle : styles.title} onPress={() => setLinkIndex(index)}>
-                      <Text style={styles.titleText}>{link.title}</Text>
-                    </Pressable>
-                    {index === linkIndex &&
-                      <PulsatingCircle 
-                        title={link.title}
-                        id={id}
-                        handleLinkClick={handleLinkClick}
-                        style={styles.circle}
-                      />
-                    }
-                  </View>
-                  ))
-                }
-              </View>
-            </ScrollView>
-          </View>
+    <>
+      <View style={styles.currentLinkContainer}>
+        <View style={styles.currentLinkTitleContainer}>
+          <Text style={styles.currentLinkTitle}>{selectedTitle}</Text>
         </View>
-    </View>
+          <PulsatingCircle 
+            title={selectedTitle}
+            id={id}
+            handleLinkClick={handleLinkClick}
+            style={styles.circle}
+          />
+        </View>
+      <View style={styles.wholePageContainer}>  
+        <View style={styles.sortButtonsContainer}>
+          <BananaButton onButtonPress={sortAlpha} color='lightgrey' buttonDepth={5} height={30} width={30} buttonImage='alphabetical'/>
+          <BananaButton onButtonPress={sortRandom} color='lightgrey' buttonDepth={5} height={30} width={30} buttonImage='random'/>
+        </View>
+        <View style={styles.linksViewContainer}>
+          <View style={styles.linksView}>
+              <ScrollView style={styles.scroll}>
+                <View style={styles.linksContainer}>
+                  {links && sortedLinks && sortedLinks.map((link, index) => (
+                    <View key={index} style={styles.titleContainer}>
+                      <Pressable
+                        style={index === linkIndex ? styles.selectedTitle : styles.title}
+                        onPress={() => {
+                          setLinkIndex(index)
+                          setSelectedTitle(link.title)
+                        }}
+                      >
+                          <Text style={styles.titleText}>{link.title}</Text>
+                      </Pressable>
+                    </View>
+                    ))
+                  }
+                </View>
+              </ScrollView>
+            </View>
+          </View>
+      </View>
+    </>
 
     //   <ImageBackground source={''} style={styles.linksView}>
     //   <PickerSelectButton title={selectedTitle[0]} id={id} addPage={addPage} handleLinkClick={handleLinkClick} color={'yellow'} />
@@ -96,6 +108,36 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     alignItems: 'center',
+  },
+  currentLinkContainer: {
+    width: '105%',
+    flexDirection: 'row',
+    // justifyContent: 'center',
+    alignItems: 'center',
+    // position: 'relative',
+    marginVertical: 25,
+    // borderRadius: '20'
+    // height: 25
+  },
+  circle: {
+    zIndex: 10,
+  },
+  currentLinkTitleContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 30,
+    backgroundColor: 'orange',
+    height: 26
+  },
+  currentLinkTitle: {
+    flexDirection: 'column',
+    width: '100%',
+    textAlign: 'center',
+    height: 25,
+    fontSize: 18,
+    fontWeight: 'bold',
+    
   },
   linksContainer: {
     width: '100%',
@@ -137,13 +179,10 @@ const styles = StyleSheet.create({
     overflow: 'visible',
     // width: '80%'
   },
-  circle: {
-    zIndex: 10,
-  },
   sortButtonsContainer: {
     position: 'absolute',
-    width: '90%',
-    top: -10,
+    width: '80%',
+    top: -5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     zIndex: 15,

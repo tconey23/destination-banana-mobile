@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Animated, Pressable, StyleSheet, Text } from 'react-native';
+import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
@@ -44,13 +44,15 @@ function PulsatingCircle({ title, id, handleLinkClick }) {
                 { transform: [{ scale: scaleValue }] },
             ]}
         >
-            <Pressable style={styles.selectedButton} onPress={() => clickTimeout(title, id)}>
-                {title === 'Banana' ?
-                    <Text style={{fontSize: 20}}>🍌</Text>
-                    :
-                    <FontAwesomeIcon icon={faArrowRight} size={25} color="#FFFFFF" />
-                }
-            </Pressable>
+            <View
+                style={styles.selectedButton}
+                onPress={() => clickTimeout(title, id)}>
+                    {title === 'Banana' ?
+                        <Text style={{fontSize: 20}}>🍌</Text>
+                        :
+                        <FontAwesomeIcon icon={faArrowRight} size={25} color="#FFFFFF" />
+                    }
+            </View>
         </Animated.View>
     )
 }
