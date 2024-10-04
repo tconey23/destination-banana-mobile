@@ -5,10 +5,10 @@ import LinksBox from '../uiElements/LinksBox';
 import ArticleSnippet from '../uiElements/ArticleSnippet';
 import { Easing } from 'react-native-reanimated'
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get('window')
 
 function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOnPage }) {
-  const [imageSrc, setImageSrc] = useState();
+  const [imageSrc, setImageSrc] = useState()
   const [background] = useState(require('../assets/realistic-old-paper.png'))
   const [thisIndex, setThisIndex] = useState(currentPages.length - 2)
 

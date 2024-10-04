@@ -39,12 +39,8 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
   return (
     <View style={styles.wholePageContainer}>
       <View style={styles.sortButtonsContainer}>
-        <View style={styles.sortButton}>
-          <BananaButton onButtonPress={sortAlpha} color='lightgrey' buttonHeight={5} buttonImage='alphabetical'/>
-        </View>
-        <View style={styles.sortButton}>
-          <BananaButton onButtonPress={sortRandom} color='lightgrey' buttonHeight={5} buttonImage='random'/>
-        </View>
+        <BananaButton onButtonPress={sortAlpha} color='lightgrey' buttonDepth={5} height={35} width={35} buttonImage='alphabetical'/>
+        <BananaButton onButtonPress={sortRandom} color='lightgrey' buttonDepth={5} height={35} width={35} buttonImage='random'/>
       </View>
       <View style={styles.linksViewContainer}>
         <View style={styles.linksView}>
@@ -147,16 +143,11 @@ const styles = StyleSheet.create({
   sortButtonsContainer: {
     position: 'absolute',
     width: '90%',
-    top: -15,
+    top: -10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     zIndex: 15,
   },
-  sortButton: {
-    transform: [{ scale: .6 }] 
-  },
-
-
   linksViewContainer: {
     flex: 1,
     flexDirection: 'row',

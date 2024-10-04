@@ -1,7 +1,7 @@
 import { View, Pressable, StyleSheet, Text, Image } from 'react-native';
 import { useFonts, Fredoka_300Light, Fredoka_400Regular, Fredoka_500Medium, Fredoka_600SemiBold, Fredoka_700Bold } from '@expo-google-fonts/fredoka';
 
-function BananaButton({onButtonPress, color, buttonText, buttonHeight = 12, buttonImage, height}) {
+function BananaButton({onButtonPress, color, buttonText, buttonDepth = 12, buttonImage, height, width}) {
     let [fontsLoaded] = useFonts({
         Fredoka_400Regular,
         Fredoka_500Medium,
@@ -20,8 +20,9 @@ function BananaButton({onButtonPress, color, buttonText, buttonHeight = 12, butt
                     styles.button,
                     { backgroundColor: color},
                     { height: height },
-                    {shadowOffset: { width: 0, height: buttonHeight }},
-                    {transform: pressed ? [{translateY: buttonHeight}] : [{translateY: 0}]},
+                    { width: width },
+                    {shadowOffset: { width: 0, height: buttonDepth }},
+                    {transform: pressed ? [{translateY: buttonDepth}] : [{translateY: 0}]},
                     pressed && { shadowOffset: { width: 0, height: 0 } },
                     color === 'white' && { 
                         backgroundColor: styles.button.backgroundColorWhite, 
@@ -35,9 +36,16 @@ function BananaButton({onButtonPress, color, buttonText, buttonHeight = 12, butt
                 >
                     {fontsLoaded && 
                         (buttonText ? (
-                            <Text style={[styles.buttonText, {fontFamily: 'Fredoka_600SemiBold'}]}>{buttonText}</Text>
+                            <Text
+                                style={[styles.buttonText, {fontFamily: 'Fredoka_600SemiBold'}]}>
+                                    {buttonText}
+                            </Text>
                           ) : (
-                            <Image source={buttonImage === "random" ? randomIcon : alphabeticalIcon} style={styles.buttonImage}/>
+                            <Image
+                                source={buttonImage === "random" ? randomIcon : alphabeticalIcon}
+                                style={[styles.buttonImage, {width: width-10}]}
+                                resizeMode="contain"
+                            />
                           ))
                     }
 
@@ -52,7 +60,6 @@ export default BananaButton
 const styles = StyleSheet.create({
     button: {
         zIndex: 10,
-        width: '100%',
         height: '100%',
         // height: 45,    
         borderWidth: 0,   
@@ -70,8 +77,6 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     buttonImage: {
-        width: 35,
-        height: 35,
         margin: 10
     }
   });

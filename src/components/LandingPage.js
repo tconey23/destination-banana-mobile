@@ -1,6 +1,8 @@
-import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground, Image, Dimensions } from 'react-native'
 import BananaButton from '../uiElements/BananaButton'
 import { StatusBar } from 'expo-status-bar'
+
+const { width } = Dimensions.get('window')
 
 function LandingPage({clickStart, showHelp}) {
     const landingBackground = require('../../src/assets/beach_light.png')
@@ -12,8 +14,8 @@ function LandingPage({clickStart, showHelp}) {
                 <Image source={dBLogoBig} style={styles.dBLogo}/>
                 <Text style={styles.landingText}>A game of connections. And bananas. Can you get to "banana" before the pesky monkeys gobble them all up??</Text>
                 <View style={styles.buttonContainer}>
-                    <BananaButton onButtonPress={clickStart} color='yellow' buttonText='start' height={45}/>
-                    <BananaButton onButtonPress={showHelp} color='white' buttonText='help' height={45}/>
+                    <BananaButton onButtonPress={clickStart} color='yellow' buttonText='start' height={45} width={width/2} />
+                    <BananaButton onButtonPress={showHelp} color='white' buttonText='help' height={45} width={width/2} />
                 </View>
                 <StatusBar style="auto" />
             </View>
@@ -43,7 +45,6 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
       height: 120,
-      width: '50%',
       flexDirection: 'column',
       justifyContent: 'space-between',
       marginBottom: 30
