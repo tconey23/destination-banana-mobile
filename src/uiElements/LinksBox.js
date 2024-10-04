@@ -68,8 +68,8 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
         </Pressable>
       <View style={styles.wholePageContainer}>  
         <View style={styles.sortButtonsContainer}>
-          <BananaButton onButtonPress={sortAlpha} color='lightgrey' buttonDepth={5} height={30} width={30} buttonImage='alphabetical'/>
-          <BananaButton onButtonPress={sortRandom} color='lightgrey' buttonDepth={5} height={30} width={30} buttonImage='random'/>
+          <BananaButton onButtonPress={sortAlpha} color='lightgrey' buttonDepth={3} height={30} width={30} buttonImage='alphabetical'/>
+          <BananaButton onButtonPress={sortRandom} color='lightgrey' buttonDepth={3} height={30} width={30} buttonImage='random'/>
         </View>
         <View style={styles.linksViewContainer}>
           <View style={styles.linksView}>
