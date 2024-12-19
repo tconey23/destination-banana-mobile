@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     alignItems: 'center',
     // position: 'relative',
-    marginVertical: 25,
+    marginVertical: 20,
     // borderRadius: '20'
     // height: 25
   },
