@@ -1,20 +1,38 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Dimensions, ImageBackground } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, View, Text, Dimensions, ImageBackground} from 'react-native';
 import Swiper from 'react-native-swiper';
 import LinksBox from '../uiElements/LinksBox';
 import ArticleSnippet from '../uiElements/ArticleSnippet';
+import { Easing } from 'react-native-reanimated'
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get('window')
 
 function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOnPage }) {
-  const [imageSrc, setImageSrc] = useState();
+  const [imageSrc, setImageSrc] = useState()
   const [background] = useState(require('../assets/realistic-old-paper.png'))
+  const [thisIndex, setThisIndex] = useState(currentPages.length - 2)
+
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    setThisIndex(currentPages.length - 1)
+  }, [currentPages.length])
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.scrollTo(thisIndex)
+    }
+  }, [thisIndex])
+
+
 
   return (
     <View style={styles.pagesWrapper}>
       <Swiper
-       loop={false}
-        index={currentPages.length -1}
+        ref={swiperRef}
+        loop={false}
+        showsButtons={true}
+        easing={Easing.ease}
         showsPagination={true}
         containerStyle={styles.swiperContainer}
         slideStyle={styles.slide}
@@ -23,15 +41,11 @@ function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOn
         activeSlideAlignment="center"
       >
         {currentPages.map((page, index) => (
-          <View key={index} style={styles.slide}>
-            <ImageBackground source={''} style={styles.page}>
-              <View style={styles.textWrapper}>
-                <Text style={styles.title}>
-                  {page.title.replace(/_/g, ' ')}
-                </Text>
-              </View>
-              <ArticleSnippet imageSrc={page.image} />
-            </ImageBackground>
+          <View key={index} style={styles.page}>
+            <Text style={styles.title}>
+              {page.title.replace(/_/g, ' ')}
+            </Text>
+            <ArticleSnippet imageSrc={page.image} />
             <LinksBox
                 key={index}
                 id={page.id}
@@ -57,44 +71,35 @@ const styles = StyleSheet.create({
     shadowColor: 'black', 
     shadowOffset: 2,
     shadowRadius: 10,
-    shadowOpacity: 1
+    shadowOpacity: .3
   },
   swiperContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    width: width * 1
+    width: width
   },
-  slide: {
+  page: {
     width: width-100,
-    marginVertical: 20,
+    alignItems: 'center',
+    marginBottom: 50,
     borderRadius: 20,
     overflow: 'visible',
     flex: 1,
     justifyContent: 'center',
     alignSelf: 'center',
     paddingHorizontal: 20,
-    paddingVertical: 20,
-  },
-  page: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 40,
-    marginVertical: -30,
+    paddingVertical: 0,
+    // borderStyle: 'solid',
+    // borderColor: "red",
+    // borderWidth: 2,
   },
   title: {
     color: 'black',
-    fontSize: 20,
-    fontWeight: '600',
+    marginVertical: 5,
+    fontSize: 25,
+    fontWeight: '700',
     textAlign: 'center',
   },
-  textWrapper: {
-    backgroundColor: 'rgba(255,255,255,0.3)',
-    marginTop: 40,
-    marginBottom: -30,
-    padding: 10,
-    borderRadius: 20,
-  }
 });

@@ -1,12 +1,17 @@
 import React from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+import BananaButton from '../uiElements/BananaButton'
 
-function PageHead({allPages, returnHome, currentPages}) {
-    
+function PageHead({allPages, returnHome, currentPages, toggleGameViews}) {
+    const palmTree = require('../../src/assets/tree_icon.png')
+
   return (
     <View style={styles.pageHeader}>
+        <Pressable onPress={() => toggleGameViews()}>
+            <Image source={palmTree} style={styles.palm}/>
+        </Pressable>
         <View style={styles.pageCountWrapper}>
             <Text style={styles.pageCount}>
                 {currentPages.length ?
@@ -16,8 +21,8 @@ function PageHead({allPages, returnHome, currentPages}) {
                 }
             </Text>
         </View>
-        <Pressable onPress={() => returnHome()} style={styles.linkIcon}>
-            <FontAwesomeIcon icon={faHome} size={20} color="#000" />
+        <Pressable onPress={() => returnHome()}>
+            <FontAwesomeIcon icon={faHome} size={30} color="#000" />
         </Pressable>
     </View>
   )
@@ -28,20 +33,19 @@ export default PageHead
 const styles = StyleSheet.create({
     pageHeader: {
         flexDirection: 'row',
-        backgroundColor: 'rgba(0,0,0,0.25)',
+        justifyContent: 'space-between',
         marginTop: 50,
         height: 50,
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingHorizontal: 30,
     },
     pageCount: {
-      fontWeight: '800',
+        fontWeight: '800',
+        color: 'orange',
+        fontSize: 20,
     },
-    pageCountWrapper: {
-        paddingLeft: 50,
-        flex: 3
-    },
-    linkIcon: { 
-        paddingLeft: 100,
-        flex: 2,
-    } 
+    palm: {
+        width: 30,
+        height: 30
+    }
   });
