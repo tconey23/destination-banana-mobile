@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Text, Dimensions, ImageBackground} from 'react-native';
 import Swiper from 'react-native-swiper';
 import LinksBox from '../uiElements/LinksBox';
@@ -12,18 +12,27 @@ function LinksView({ currentPages, addPage, handleLinkClick, currentIndex, setOn
   const [background] = useState(require('../assets/realistic-old-paper.png'))
   const [thisIndex, setThisIndex] = useState(currentPages.length - 2)
 
+  const swiperRef = useRef(null);
 
   useEffect(() => {
     setThisIndex(currentPages.length - 1)
   }, [currentPages.length])
 
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.scrollTo(thisIndex)
+    }
+  }, [thisIndex])
+
+
+
   return (
     <View style={styles.pagesWrapper}>
       <Swiper
+        ref={swiperRef}
         loop={false}
         showsButtons={true}
         easing={Easing.ease}
-        index={thisIndex}
         showsPagination={true}
         containerStyle={styles.swiperContainer}
         slideStyle={styles.slide}

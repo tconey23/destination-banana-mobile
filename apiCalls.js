@@ -61,9 +61,7 @@ async function getLinks(title) {
                 linksArray.push(link)
             })
         })
-
-        console.log("LA", linksArray)
-        
+                
     } catch (error) {
         console.log(error)
     }
