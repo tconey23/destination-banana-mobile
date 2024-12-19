@@ -82,6 +82,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     paddingHorizontal: 20,
     paddingVertical: 0,
+    // borderStyle: 'solid',
+    // borderColor: "red",
+    // borderWidth: 2,
   },
   title: {
     color: 'black',

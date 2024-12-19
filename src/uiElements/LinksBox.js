@@ -21,7 +21,6 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
   function clickTimeout(title, id) {
       setCanClick(false)
       handleLinkClick(title, id)
-  
       setTimeout(() => {
       setCanClick(true)
       }, 500);
@@ -72,50 +71,25 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
           <BananaButton onButtonPress={sortRandom} color='lightgrey' buttonDepth={3} height={30} width={30} buttonImage='random'/>
         </View>
         <View style={styles.linksViewContainer}>
-          <View style={styles.linksView}>
-              <ScrollView style={styles.scroll}>
-                <View style={styles.linksContainer}>
-                  {links && sortedLinks && sortedLinks.map((link, index) => (
-                    <View key={index} style={styles.titleContainer}>
-                      <Pressable
-                        style={index === linkIndex ? styles.selectedTitle : styles.title}
-                        onPress={() => {
-                          setLinkIndex(index)
-                          setSelectedTitle(link.title)
-                        }}
-                      >
-                          <Text style={styles.titleText}>{link.title}</Text>
-                      </Pressable>
-                    </View>
-                    ))
-                  }
-                </View>
-              </ScrollView>
-            </View>
+            <ScrollView style={styles.scroll}>
+                {links && sortedLinks && sortedLinks.map((link, index) => (
+                  <View key={index} style={styles.titleContainer}>
+                    <Pressable
+                      style={index === linkIndex ? styles.selectedTitle : styles.title}
+                      onPress={() => {
+                        setLinkIndex(index)
+                        setSelectedTitle(link.title)
+                      }}
+                    >
+                        <Text style={styles.titleText}>{link.title}</Text>
+                    </Pressable>
+                  </View>
+                  ))
+                }
+            </ScrollView>
           </View>
       </View>
     </>
-
-    //   <ImageBackground source={''} style={styles.linksView}>
-    //   <PickerSelectButton title={selectedTitle[0]} id={id} addPage={addPage} handleLinkClick={handleLinkClick} color={'yellow'} />
-    //   <View style={styles.pickerContainer}>
-    //     <Picker
-    //       selectedValue={selectedTitle[1]}
-    //       style={styles.picker}
-    //       onValueChange={(itemValue, itemIndex) => {
-    //         setSelectedTitle([links[itemIndex].title, itemIndex]);
-    //       }}
-    //       >
-    //       {links && links.map((link, index) => (
-    //           <Picker.Item
-    //             key={index}
-    //             label={link.title}
-    //             value={index}
-    //             backgroundColor={selectedTitle[1] === index ? 'blue' : 'black'}/>
-    //       ))}
-    //     </Picker>
-    //   </View>
-    // </ImageBackground>
   )
 }
 
@@ -124,6 +98,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     alignItems: 'center',
+    marginTop: 10
   },
   currentLinkContainer: {
     width: '105%',
@@ -147,20 +122,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
     height: 26
   },
-  currentLinkTitle: {
-    flexDirection: 'column',
-    width: '100%',
-    textAlign: 'center',
-    height: 25,
-    fontSize: 20,
-    // fontWeight: 'bold',
-  },
-  linksContainer: {
-    width: '100%',
-    overflow: 'visible',
-    alignItems: 'center',
-    paddingTop: 20,
-  },
+  // currentLinkTitle: {
+  //   flexDirection: 'column',
+  //   width: '100%',
+  //   textAlign: 'center',
+  //   height: 25,
+  //   fontSize: 20,
+  // },
+  // linksContainer: {
+  //   width: '100%',
+  //   overflow: 'visible',
+  //   alignItems: 'center',
+  //   paddingTop: 20,
+  // },
   titleContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -200,45 +174,28 @@ const styles = StyleSheet.create({
   sortButtonsContainer: {
     position: 'absolute',
     width: '80%',
-    top: -5,
+    top: -15,
     flexDirection: 'row',
     justifyContent: 'space-between',
     zIndex: 15,
   },
   linksViewContainer: {
-    flex: 1,
+    height: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
     overflow: 'hidden',
-    width: width,
-    borderRadius: 20,
-    // paddingTop: 20
-  },
-
-  linksView: {
-    marginTop: 15,
-    width: '80%',
-    alignItems: 'center',
-    flexDirection: 'column',
+    width: width * .70,
     borderRadius: 20,
     backgroundColor: 'rgba(255,255,255,0.7)',
+    paddingVertical: 10
   },
-  pickerContainer: {
-    width: 300,
-    height: 250,
-    alignItems: 'center',
-    overflow: 'hidden',
-    // backgroundColor: 'yellow',
-    justifyContent: 'center',
-  },
-  picker: {
-    flex:1,
-    width: 250,
-    fontWeight: '900',
-    // backgroundColor: 'rgba(115,115,115,0.3)',
-    justifyContent: 'center',
-    borderRadius: 20, 
-  },
+  // pickerContainer: {
+  //   width: 300,
+  //   height: 250,
+  //   alignItems: 'center',
+  //   overflow: 'hidden',
+  //   justifyContent: 'center',
+  // },
 });
 
 export default LinksBox;

@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     pageCount: {
         fontWeight: '800',
         color: 'orange',
-        fontSize: 20
+        fontSize: 20,
     },
     palm: {
         width: 30,
