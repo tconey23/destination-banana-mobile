@@ -45,7 +45,7 @@ function LinksBox({ links, id, addPage, currentPages, handleLinkClick }) {
     setSortedLinks(randoLinks)
   }
 
-  console.log('sortedLinks', sortedLinks)
+  // console.log('sortedLinks', sortedLinks)
 
   return (
     <>

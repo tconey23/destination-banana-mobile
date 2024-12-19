@@ -23,12 +23,13 @@ async function getMedia(title) {
     try {
         const res = await fetch(url)
         data = await res.json()
+        console.log(data)
         const pageThumb = data.items.find((img) => img.leadImage === true).srcset[0].src
-
         return pageThumb
 
     } catch (error) {
-        return '//upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/150px-Wikipedia-logo-v2.svg.png'
+        return null
+        //return '//upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/150px-Wikipedia-logo-v2.svg.png'
     }
 }
 
@@ -49,7 +50,7 @@ async function getFeatured() {
   
 async function getLinks(title) {
     const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=links&titles=${'Musa_(genus)'}&formatversion=2&pllimit=max&plnamespace=0`.replace(/%20/g, '_')
-    const linksArray = []
+    let linksArray = []
 
     try {
         const response = await fetch(url)
@@ -60,12 +61,20 @@ async function getLinks(title) {
                 linksArray.push(link)
             })
         })
+
+        console.log("LA", linksArray)
         
     } catch (error) {
         console.log(error)
     }
 
-    const randomizedArray = randomizeLinks(linksArray)
+    let filterTerms = ['identifier', 'wikidata']
+
+    let filteredArray = linksArray.filter((l) => !filterTerms.some((term) => l.title?.includes(term)))
+
+    
+
+    const randomizedArray = randomizeLinks(filteredArray)
     let x
     randomizedArray.length < 50 ? x = 50 : x = randomizedArray.length
     
